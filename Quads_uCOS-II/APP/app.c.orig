@@ -1,0 +1,47 @@
+#include "includes.h"
+
+void Task_ONE(void *p_arg)
+{
+    (void)p_arg;
+    while(1)
+    {
+        
+    }
+}
+
+void Task_LED1(void *p_arg)
+{
+    (void)p_arg;
+    while(1)
+    {
+        GPIO_ResetBits(GPIOA,GPIO_Pin_0);
+        delay_us(1000000);
+        GPIO_SetBits(GPIOA,GPIO_Pin_0);
+        delay_us(1000000);
+    }
+}
+
+void Task_LED2(void *p_arg)
+{
+    (void)p_arg;
+    while(1)
+    {
+        GPIO_ResetBits(GPIOA,GPIO_Pin_1);
+        delay_us(1100000);
+        GPIO_SetBits(GPIOA,GPIO_Pin_1);
+        delay_us(1100000);
+    }
+}
+
+void Task_LED3(void *p_arg)
+{
+    (void)p_arg;
+    while(1)
+    {
+        GPIO_ResetBits(GPIOA,GPIO_Pin_2);
+        delay_us(1200000);
+        GPIO_SetBits(GPIOA,GPIO_Pin_2);
+        delay_us(1200000);
+    }
+}
+

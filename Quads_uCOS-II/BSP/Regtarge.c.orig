@@ -1,0 +1,47 @@
+/************************* (C) COPYRIGHT 2017 G627 Team **************************
+ * 文件名	：Regtarge.c
+ * 描述    	：重定向标准库函数printf所需配置        
+ * 实验平台	：STM32F103C8T6
+ * 库版本	：ST3.5.0
+ * 作者		：河王
+ * QQ		：345792307
+ * 团队		：G627
+**********************************************************************************/
+
+#include <stdio.h>
+#include <rt_misc.h>
+#pragma import(__use_no_semihosting_swi)
+extern int  SendChar(int ch);
+extern int  GetKey(void);
+struct __FILE
+{
+    int handle;
+};
+FILE __stdout;
+FILE __stdin;
+int fputc(int ch, FILE *f)
+{
+    return (SendChar(ch));
+}
+int fgetc(FILE *f)
+{
+    return (SendChar(GetKey()));
+}
+void _ttywrch(int ch)
+{
+    SendChar (ch);
+}
+int ferror(FILE *f)
+{
+    return EOF;
+}
+void _sys_exit(int return_code)
+{
+label:
+    goto label;
+}
+
+
+
+
+/************************* (C) COPYRIGHT 2017 G627 Team **************************/

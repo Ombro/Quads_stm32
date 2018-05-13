@@ -1,0 +1,7 @@
+--cpp -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I .\CMSIS -I .\FWLIB\inc -I .\FWLIB\src -I .\STARTCODE -I .\USER -I .\APP -I .\BSP -I .\uCOS_Port -I .\uCOS_Sources
+-I.\RTE\_Quads_uCOS-II
+-I"E:\Program Files (x86)\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include"
+-I"E:\Program Files (x86)\Keil_v5\ARM\CMSIS\Include"
+-I"E:\Program Files (x86)\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0"
+-D__UVISION_VERSION="523" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER
+-o .\objects\iic_config.o --omf_browse .\objects\iic_config.crf --depend .\objects\iic_config.d "BSP\iic_config.cpp"
