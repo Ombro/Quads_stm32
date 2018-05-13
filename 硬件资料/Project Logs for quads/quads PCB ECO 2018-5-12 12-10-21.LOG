@@ -1,0 +1,3 @@
+Added Pin To Net: NetName=GND Pin=ESP8266-8
+Added Pin To Net: NetName=VCC Pin=ESP8266-1
+Added Net: Name=VCC

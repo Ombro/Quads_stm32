@@ -1,0 +1,8 @@
+Removed Pin From Net: NetName=GND Pin=ESP8266-8
+Change Net Name : Old Net Name=VCC New Net Name=3V3
+Added Pin To Net: NetName=EN Pin=ESP8266-3
+Added Net: Name=EN
+Added Pin To Net: NetName=RST Pin=ESP8266-2
+Added Net: Name=RST
+Added Pin To Net: NetName=TX Pin=ESP8266-4
+Added Net: Name=TX

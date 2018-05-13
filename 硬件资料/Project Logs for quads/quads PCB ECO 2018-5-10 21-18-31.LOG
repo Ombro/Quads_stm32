@@ -1,0 +1,13 @@
+Added Component: Designator=C?(C0603)
+Added Component: Designator=D?(LED)
+Added Component: Designator=P?(HDR2X3)
+Added Component: Designator=P?(HDR1X20)
+Added Component: Designator=R?(R0603)
+Added Component: Designator=SW?(KEY-SMT)
+Added Component: Designator=U?(Micro_USB)
+Added Component: Designator=U?(SOT-23-5)
+Added Component: Designator=U?(Micro_USB)
+Added Component: Designator=U?(48P)
+Added Component: Designator=Y?(XTAL1)
+Added Class: Name=quads
+Added Room: Name=quads
