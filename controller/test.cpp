@@ -2,7 +2,6 @@
 
 Test::Test(QObject *parent) : QObject(parent)
 {
-    i = 1;
     qDebug("start");
 }
 
@@ -16,17 +15,5 @@ QString Test::data() const
 void Test::setData(const QString &data)
 {
     str = data;
-    qDebug()<<str;
-    emit data_Changed();
-}
-
-void Test::data_opt()
-{
-    qDebug("hello");
-}
-
-void Test::change_data()
-{
-    i++;
-    qDebug("world");
+    qDebug(str.toUtf8());
 }

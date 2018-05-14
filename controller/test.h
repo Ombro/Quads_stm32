@@ -14,17 +14,13 @@ public:
     explicit Test(QObject *parent = nullptr);
     ~Test();
 
-    Q_INVOKABLE void change_data();
-
     QString data() const;
     void setData(const QString &data);
 signals:
     void data_Changed();
 public slots:
-    void data_opt();
 
 private:
-    int i;
     QString str;
 };
 

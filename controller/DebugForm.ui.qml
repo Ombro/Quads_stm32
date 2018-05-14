@@ -1,6 +1,7 @@
 import QtQuick 2.4
 import QtQuick.Controls 2.3
 import Qt.Test_class 1.0
+
 Item {
     width: 480
     height: 640
@@ -124,10 +125,11 @@ Item {
                         y: 101
                         width: 260
                         height: 40
+                        stepSize: 0.01
                         anchors.horizontalCenter: parent.horizontalCenter
                         value: 0.5
                         Test {
-                            id :receive
+                            id: receive
                             data: slider_p_shell.value
                         }
                     }
@@ -136,11 +138,8 @@ Item {
                         target: slider_p_shell
                         onValueChanged: {
                             data_p_shell.text = slider_p_shell.value
-
                         }
                     }
-
-
 
                     Slider {
                         id: slider_i_shell
@@ -148,6 +147,7 @@ Item {
                         y: 161
                         width: 260
                         height: 40
+                        stepSize: 0.01
                         anchors.horizontalCenter: parent.horizontalCenter
                         value: 0.5
                         onValueChanged: data_i_shell.text = value
@@ -242,6 +242,7 @@ Item {
                         y: 61
                         width: 260
                         height: 40
+                        stepSize: 0.01
                         anchors.horizontalCenter: parent.horizontalCenter
                         value: 0.5
                         anchors.horizontalCenterOffset: 0
@@ -254,6 +255,7 @@ Item {
                         y: 121
                         width: 260
                         height: 40
+                        stepSize: 0.01
                         anchors.horizontalCenter: parent.horizontalCenter
                         value: 0.5
                         anchors.horizontalCenterOffset: 0
@@ -266,6 +268,7 @@ Item {
                         y: 181
                         width: 260
                         height: 40
+                        stepSize: 0.01
                         anchors.horizontalCenter: parent.horizontalCenter
                         value: 0.5
                         anchors.horizontalCenterOffset: 0
