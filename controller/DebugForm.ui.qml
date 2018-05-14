@@ -1,6 +1,6 @@
 import QtQuick 2.4
 import QtQuick.Controls 2.3
-
+import Qt.Test_class 1.0
 Item {
     width: 480
     height: 640
@@ -126,8 +126,21 @@ Item {
                         height: 40
                         anchors.horizontalCenter: parent.horizontalCenter
                         value: 0.5
-                        onValueChanged: data_p_shell.text = value
+                        Test {
+                            id :receive
+                            data: slider_p_shell.value
+                        }
                     }
+
+                    Connections {
+                        target: slider_p_shell
+                        onValueChanged: {
+                            data_p_shell.text = slider_p_shell.value
+
+                        }
+                    }
+
+
 
                     Slider {
                         id: slider_i_shell

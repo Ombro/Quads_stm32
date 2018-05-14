@@ -1,41 +1,32 @@
-#include "test.h"
-#include <QDebug>
-test::test(QObject *parent) : QObject(parent)
+#include "Test.h"
+
+Test::Test(QObject *parent) : QObject(parent)
 {
-    QObject::connect(this, SIGNAL(link()), this, SLOT(print_data()));
+    i = 1;
+    qDebug("start");
 }
 
+Test::~Test(){}
 
-
-
-float test::get_shell_p()
+QString Test::data() const
 {
-    return data_shell_p;
+    return str;
 }
 
-float test::get_shell_i()
+void Test::setData(const QString &data)
 {
-    return data_shell_i;
+    str = data;
+    qDebug()<<str;
+    emit data_Changed();
 }
 
-float test::get_core_p()
+void Test::data_opt()
 {
-    return data_core_p;
+    qDebug("hello");
 }
 
-float test::get_core_i()
+void Test::change_data()
 {
-    return data_core_i;
+    i++;
+    qDebug("world");
 }
-
-float test::get_core_d()
-{
-    return data_core_d;
-}
-
-void test::print_data()
-{
-    QDebug("helloworld!");
-}
-
-test::~test(){}

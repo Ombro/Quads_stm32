@@ -3,56 +3,29 @@
 
 #include <QObject>
 #include <QQuickItem>
+#include <QDebug>
+#include <QString>
 
-
-class test : public QObject
+class Test: public QObject
 {
     Q_OBJECT
-
-
-//    Q_PROPERTY(float data_shell_p READ data_shell_p NOTIFY shell_p_change)
-//    Q_PROPERTY(float data_shell_i READ data_shell_p NOTIFY shell_i_change)
-//    Q_PROPERTY(float data_core_p READ data_core_p NOTIFY core_p_change)
-//    Q_PROPERTY(float data_core_i READ data_core_i NOTIFY core_i_change)
-//    Q_PROPERTY(float data_core_d READ data_core_d NOTIFY core_d_change)
-    Q_PROPERTY(float data_shell_p READ get_shell_p)
-    Q_PROPERTY(float data_shell_i READ get_shell_p)
-    Q_PROPERTY(float data_core_p READ get_core_p)
-    Q_PROPERTY(float data_core_i READ get_core_i)
-    Q_PROPERTY(float data_core_d READ get_core_d)
-
-    Q_PROPERTY(Qstring pid_parm READ pid_parm NOTIFY link)
-
+    Q_PROPERTY(QString data READ data WRITE setData NOTIFY data_Changed)
 public:
-    explicit test(QObject *parent = nullptr);
-    ~test();
+    explicit Test(QObject *parent = nullptr);
+    ~Test();
 
-    float get_shell_p();
-    float get_shell_i();
-    float get_core_p();
-    float get_core_i();
-    float get_core_d();
+    Q_INVOKABLE void change_data();
 
-
-
+    QString data() const;
+    void setData(const QString &data);
 signals:
-//    void shell_p_change();
-//    void shell_i_change();
-//    void core_p_change();
-//    void core_i_change();
-//    void core_d_change();
-    void link();
+    void data_Changed();
 public slots:
-//    void send_data();
-    void print_data();
+    void data_opt();
 
 private:
-    float data_shell_p;
-    float data_shell_i;
-    float data_core_p;
-    float data_core_i;
-    float data_core_d;
-
+    int i;
+    QString str;
 };
 
 #endif // TEST_H
