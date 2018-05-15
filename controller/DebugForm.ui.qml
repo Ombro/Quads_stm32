@@ -1,12 +1,12 @@
 import QtQuick 2.4
 import QtQuick.Controls 2.3
-import Qt.Test_class 1.0
 
+//import Qt.Test_class 1.0
 Item {
     width: 480
     height: 640
     property alias d_core: d_core
-    //visible: false
+    visible: false
     Rectangle {
         id: rectangle
         color: "#ffffff"
@@ -35,6 +35,13 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
             }
 
+            Connections {
+                target: pid_x
+                onClicked: {
+                    TCP.link_x_parm()
+                }
+            }
+
             Button {
                 id: pid_y
                 x: 239
@@ -44,6 +51,13 @@ Item {
                 anchors.bottomMargin: 0
                 anchors.horizontalCenterOffset: 80
                 anchors.horizontalCenter: parent.horizontalCenter
+            }
+
+            Connections {
+                target: pid_y
+                onClicked: {
+                    TCP.link_y_parm()
+                }
             }
 
             Item {
@@ -128,16 +142,18 @@ Item {
                         stepSize: 0.01
                         anchors.horizontalCenter: parent.horizontalCenter
                         value: 0.5
-                        Test {
-                            id: receive
-                            data: slider_p_shell.value
-                        }
+
+                        //                        Test {
+                        //                            id: receive
+                        //                            data: slider_p_shell.value
+                        //                        }
                     }
 
                     Connections {
                         target: slider_p_shell
                         onValueChanged: {
                             data_p_shell.text = slider_p_shell.value
+                            TCP.shell_p = slider_p_shell.value
                         }
                     }
 
@@ -150,7 +166,14 @@ Item {
                         stepSize: 0.01
                         anchors.horizontalCenter: parent.horizontalCenter
                         value: 0.5
-                        onValueChanged: data_i_shell.text = value
+                    }
+
+                    Connections {
+                        target: slider_i_shell
+                        onValueChanged: {
+                            data_i_shell.text = slider_i_shell.value
+                            TCP.shell_i = slider_i_shell.value
+                        }
                     }
 
                     Label {
@@ -246,7 +269,14 @@ Item {
                         anchors.horizontalCenter: parent.horizontalCenter
                         value: 0.5
                         anchors.horizontalCenterOffset: 0
-                        onValueChanged: data_p_core.text = value
+                    }
+
+                    Connections {
+                        target: slider_p_core
+                        onValueChanged: {
+                            data_p_core.text = slider_p_core.value
+                            TCP.core_p = slider_p_core.value
+                        }
                     }
 
                     Slider {
@@ -259,7 +289,14 @@ Item {
                         anchors.horizontalCenter: parent.horizontalCenter
                         value: 0.5
                         anchors.horizontalCenterOffset: 0
-                        onValueChanged: data_i_core.text = value
+                    }
+
+                    Connections {
+                        target: slider_i_core
+                        onValueChanged: {
+                            data_i_core.text = slider_i_core.value
+                            TCP.core_i = slider_i_core.value
+                        }
                     }
 
                     Slider {
@@ -272,7 +309,14 @@ Item {
                         anchors.horizontalCenter: parent.horizontalCenter
                         value: 0.5
                         anchors.horizontalCenterOffset: 0
-                        onValueChanged: data_d_core.text = value
+                    }
+
+                    Connections {
+                        target: slider_d_core
+                        onValueChanged: {
+                            data_d_core.text = slider_d_core.value
+                            TCP.core_d = slider_d_core.value
+                        }
                     }
 
                     Label {

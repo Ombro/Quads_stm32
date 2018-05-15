@@ -19,7 +19,7 @@ public:
 signals:
     void data_Changed();
 public slots:
-
+    void debug_test();
 private:
     QString str;
 };

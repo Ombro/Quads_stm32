@@ -4,19 +4,31 @@
 #include <QObject>
 #include <QtQml>
 #include "Test.h"
+#include <QQmlContext>
+#include "tcp_transmission.h"
+
 
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QGuiApplication app(argc, argv);
-    qmlRegisterType<Test>("Qt.Test_class", 1, 0, "Test");
+    
+//    qmlRegisterType<Test>("Qt.Test_class", 1, 0, "Test");
 
-//    Test *a = new Test();
 
-//    QObject::connect(a, SIGNAL(data_Changed()), a, SLOT(data_opt()));
 
     QQmlApplicationEngine engine;
+
+
+
+//    Test qmltest;
+//    context ->setContextProperty("QMltest", &qmltest);
+//    qmltest.setData("hello");
+    QQmlContext* context = engine.rootContext();
+    Tcp_transmission tcp;
+    context ->setContextProperty("TCP", &tcp);
+
 
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 

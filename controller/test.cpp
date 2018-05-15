@@ -17,3 +17,8 @@ void Test::setData(const QString &data)
     str = data;
     qDebug(str.toUtf8());
 }
+
+void Test::debug_test()
+{
+    qDebug()<<"I'm a test!!!"<<endl;
+}
