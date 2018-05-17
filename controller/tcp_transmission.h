@@ -6,7 +6,8 @@
 #include <QString>
 #include <QTcpSocket>
 
-class Tcp_transmission : public QObject
+
+class Tcp_transmission : public QTcpSocket
 {
     Q_OBJECT
     Q_PROPERTY(QString shell_p READ shell_p WRITE setShell_p NOTIFY shell_pChanged)
@@ -14,6 +15,11 @@ class Tcp_transmission : public QObject
     Q_PROPERTY(QString core_p READ core_p WRITE setCore_p NOTIFY core_pChanged)
     Q_PROPERTY(QString core_i READ core_i WRITE setCore_i NOTIFY core_iChanged)
     Q_PROPERTY(QString core_d READ core_d WRITE setCore_d NOTIFY core_dChanged)
+    Q_PROPERTY(QString Address READ Address WRITE setAddress NOTIFY AddressChanged)
+    Q_PROPERTY(QString Port READ Port WRITE setPort NOTIFY PortChanged)
+
+    Q_PROPERTY(QString Connect_State READ Connect_State WRITE setConnect_State NOTIFY Connect_StateChanged)
+
 
 public:
     explicit Tcp_transmission(QObject *parent = nullptr);
@@ -30,6 +36,18 @@ public:
     void setCore_i(const QString &core_p);
     void setCore_d(const QString &core_p);
 
+    QString Address() const;
+    QString Port() const;
+    void setAddress(const QString &Address);
+    void setPort(const QString &Port);
+
+
+    QString Connect_State() const;
+    void setConnect_State(QString &Connect_State);
+//    QString success() const;
+//    QString fail() const;
+//    void setSuccess(const QString &success);
+//    void setFail(const QString &fail);
 
 
 signals:
@@ -39,9 +57,21 @@ signals:
     void core_iChanged();
     void core_dChanged();
 
+    void AddressChanged();
+    void PortChanged();
+
+    void Connect_StateChanged();
+
 public slots:
+
     void link_x_parm();
     void link_y_parm();
+
+    void connecting(const QString &Address, const QString &Port);
+    void disconnect();
+
+    void connect_fail();
+    void connect_success();
 
 private:
     QString value_shell_p;
@@ -52,6 +82,13 @@ private:
 
     QString x_pid_parm;
     QString y_pid_parm;
+
+    QString address;
+    QString port;
+
+    QString connect_state;
+
+
 };
 
 #endif // TCP_TRANSMISSION_H

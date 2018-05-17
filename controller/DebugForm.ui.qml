@@ -27,10 +27,9 @@ Item {
             Button {
                 id: pid_x
                 x: 90
-                y: 452
                 text: qsTr("X")
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: 0
+                anchors.top: parent.top
+                anchors.topMargin: 470
                 anchors.horizontalCenterOffset: -80
                 anchors.horizontalCenter: parent.horizontalCenter
             }
@@ -45,10 +44,9 @@ Item {
             Button {
                 id: pid_y
                 x: 239
-                y: 519
                 text: qsTr("Y")
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: 0
+                anchors.top: parent.top
+                anchors.topMargin: 470
                 anchors.horizontalCenterOffset: 80
                 anchors.horizontalCenter: parent.horizontalCenter
             }
@@ -103,7 +101,7 @@ Item {
                         anchors.horizontalCenter: parent.horizontalCenter
                         font.bold: true
                         anchors.top: parent.top
-                        anchors.topMargin: 60
+                        anchors.topMargin: 40
                         font.pointSize: 20
                     }
 
@@ -117,7 +115,7 @@ Item {
                         anchors.leftMargin: 10
                         font.bold: true
                         anchors.bottom: parent.bottom
-                        anchors.bottomMargin: 20
+                        anchors.bottomMargin: 40
                         font.pointSize: 14
                     }
 
@@ -129,40 +127,38 @@ Item {
                         anchors.leftMargin: 10
                         font.bold: true
                         anchors.bottom: parent.bottom
-                        anchors.bottomMargin: 80
+                        anchors.bottomMargin: 100
                         font.pointSize: 14
                     }
 
                     Slider {
                         id: slider_p_shell
                         x: 30
-                        y: 101
                         width: 260
                         height: 40
+                        anchors.horizontalCenterOffset: 0
+                        anchors.top: parent.top
+                        anchors.topMargin: 81
                         stepSize: 0.01
                         anchors.horizontalCenter: parent.horizontalCenter
                         value: 0.5
-
-                        //                        Test {
-                        //                            id: receive
-                        //                            data: slider_p_shell.value
-                        //                        }
                     }
 
                     Connections {
                         target: slider_p_shell
                         onValueChanged: {
-                            data_p_shell.text = slider_p_shell.value
-                            TCP.shell_p = slider_p_shell.value
+                            data_p_shell.text = slider_p_shell.value.toLocaleString()
+                            TCP.shell_p = slider_p_shell.value.toLocaleString()
                         }
                     }
 
                     Slider {
                         id: slider_i_shell
                         x: 23
-                        y: 161
+                        y: 141
                         width: 260
                         height: 40
+                        anchors.horizontalCenterOffset: 0
                         stepSize: 0.01
                         anchors.horizontalCenter: parent.horizontalCenter
                         value: 0.5
@@ -171,15 +167,15 @@ Item {
                     Connections {
                         target: slider_i_shell
                         onValueChanged: {
-                            data_i_shell.text = slider_i_shell.value
-                            TCP.shell_i = slider_i_shell.value
+                            data_i_shell.text = slider_i_shell.value.toLocaleString()
+                            TCP.shell_i = slider_i_shell.value.toLocaleString()
                         }
                     }
 
                     Label {
                         id: data_p_shell
-                        x: 323
-                        y: 111
+                        x: 320
+                        y: 91
                         width: 30
                         height: 19
                         text: qsTr("0")
@@ -191,8 +187,8 @@ Item {
 
                     Label {
                         id: data_i_shell
-                        x: 323
-                        y: 171
+                        x: 320
+                        y: 151
                         width: 30
                         height: 19
                         text: qsTr("0")
@@ -219,7 +215,7 @@ Item {
                         anchors.horizontalCenter: parent.horizontalCenter
                         font.bold: true
                         anchors.top: parent.top
-                        anchors.topMargin: 10
+                        anchors.topMargin: -10
                         font.pointSize: 20
                     }
 
@@ -231,7 +227,7 @@ Item {
                         anchors.leftMargin: 10
                         font.bold: true
                         anchors.bottom: parent.bottom
-                        anchors.bottomMargin: 90
+                        anchors.bottomMargin: 110
                         font.pointSize: 14
                     }
 
@@ -243,7 +239,7 @@ Item {
                         anchors.leftMargin: 10
                         font.bold: true
                         anchors.bottom: parent.bottom
-                        anchors.bottomMargin: 150
+                        anchors.bottomMargin: 170
                         font.pointSize: 14
                     }
 
@@ -255,14 +251,14 @@ Item {
                         anchors.leftMargin: 10
                         font.bold: true
                         anchors.bottom: parent.bottom
-                        anchors.bottomMargin: 30
+                        anchors.bottomMargin: 50
                         font.pointSize: 14
                     }
 
                     Slider {
                         id: slider_p_core
                         x: 30
-                        y: 61
+                        y: 41
                         width: 260
                         height: 40
                         stepSize: 0.01
@@ -274,15 +270,15 @@ Item {
                     Connections {
                         target: slider_p_core
                         onValueChanged: {
-                            data_p_core.text = slider_p_core.value
-                            TCP.core_p = slider_p_core.value
+                            data_p_core.text = slider_p_core.value.toLocaleString()
+                            TCP.core_p = slider_p_core.value.toLocaleString()
                         }
                     }
 
                     Slider {
                         id: slider_i_core
                         x: 38
-                        y: 121
+                        y: 101
                         width: 260
                         height: 40
                         stepSize: 0.01
@@ -294,15 +290,15 @@ Item {
                     Connections {
                         target: slider_i_core
                         onValueChanged: {
-                            data_i_core.text = slider_i_core.value
-                            TCP.core_i = slider_i_core.value
+                            data_i_core.text = slider_i_core.value.toLocaleString()
+                            TCP.core_i = slider_i_core.value.toLocaleString()
                         }
                     }
 
                     Slider {
                         id: slider_d_core
                         x: 32
-                        y: 181
+                        y: 161
                         width: 260
                         height: 40
                         stepSize: 0.01
@@ -314,15 +310,15 @@ Item {
                     Connections {
                         target: slider_d_core
                         onValueChanged: {
-                            data_d_core.text = slider_d_core.value
-                            TCP.core_d = slider_d_core.value
+                            data_d_core.text = slider_d_core.value.toLocaleString()
+                            TCP.core_d = slider_d_core.value.toLocaleString()
                         }
                     }
 
                     Label {
                         id: data_p_core
-                        x: 328
-                        y: 71
+                        x: 320
+                        y: 51
                         width: 30
                         height: 19
                         text: qsTr("0")
@@ -334,8 +330,8 @@ Item {
 
                     Label {
                         id: data_i_core
-                        x: 338
-                        y: 131
+                        x: 320
+                        y: 111
                         width: 30
                         height: 19
                         text: qsTr("0")
@@ -347,8 +343,8 @@ Item {
 
                     Label {
                         id: data_d_core
-                        x: 338
-                        y: 189
+                        x: 320
+                        y: 171
                         width: 30
                         height: 19
                         text: qsTr("0")

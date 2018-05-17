@@ -14,6 +14,13 @@ Item {
             text: qsTr("connect")
         }
 
+        TabButton {
+            id: debug
+            x: 138
+            y: 0
+            text: qsTr("debug")
+        }
+
         Connections {
             target: connect
             onClicked: {
@@ -24,6 +31,8 @@ Item {
 
         TabButton {
             id: control
+            x: 268
+            y: 0
             text: qsTr("control")
         }
 
@@ -35,10 +44,6 @@ Item {
             }
         }
 
-        TabButton {
-            id: debug
-            text: qsTr("debug")
-        }
 
         Connections {
             target: debug

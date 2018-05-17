@@ -46,7 +46,7 @@ Item {
                     id: label_state
                     x: 50
                     y: 62
-                    text: qsTr("state")
+                    text: TCP.Connect_State
                     font.bold: true
                     anchors.verticalCenterOffset: 60
                     anchors.horizontalCenterOffset: 0
@@ -55,6 +55,16 @@ Item {
                     font.pointSize: 20
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
+
+//                Connections {
+//                    target: label_state
+//                    TCP.onConnected: {
+//                        label_state.text = qsTr("connected!!!")
+//                    }
+//                    TCP.onHostFound: {
+//                        label_state.text = qsTr("connecting...")
+//                    }
+//                }
 
                 Label {
                     id: label_port
@@ -82,15 +92,6 @@ Item {
                 }
 
                 Button {
-                    id: button_disconnect
-                    x: 167
-                    y: 368
-                    text: qsTr("Disconnect")
-                    anchors.horizontalCenterOffset: 80
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
-
-                Button {
                     id: button_connect
                     x: -80
                     y: 368
@@ -99,16 +100,41 @@ Item {
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
 
+                Connections {
+                    target: button_connect
+                    onClicked: {
+                        TCP.connecting(TCP.Address, TCP.Port)
+                    }
+                }
+
+                Button {
+                    id: button_disconnect
+                    x: 167
+                    y: 368
+                    text: qsTr("Disconnect")
+                    anchors.horizontalCenterOffset: 80
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
+
+                Connections {
+                    target: button_disconnect
+                    onClicked: {
+                        TCP.disconnect()
+                    }
+                }
+
                 TextField {
-                    id: textField
+                    id: text_address
                     x: 110
                     y: 105
                     width: 182
                     height: 40
-                    text: qsTr("Text Field")
                     font.pointSize: 16
                     horizontalAlignment: Text.AlignHCenter
                     color: "white"
+                    text: qsTr("192.168.4.1")
+                    placeholderText: qsTr("")
+                    selectByMouse: true
                     background: Rectangle {
                         width: parent.width
                         height: parent.height
@@ -119,16 +145,24 @@ Item {
                     }
                 }
 
+                Connections {
+                    target: text_address
+                    onEditingFinished: {
+                        TCP.Address = text_address.text
+                    }
+                }
+
                 TextField {
-                    id: textField1
+                    id: text_port
                     x: 110
                     y: 197
                     width: 182
                     height: 36
-                    text: qsTr("Text Field")
+                    text: qsTr("6666")
                     font.pointSize: 16
                     horizontalAlignment: Text.AlignHCenter
                     color: "white"
+                    selectByMouse: true
                     background: Rectangle {
                         width: parent.width
                         height: parent.height
@@ -136,6 +170,13 @@ Item {
                         radius: 5
                         border.color: "gray"
                         border.width: 2
+                    }
+                }
+
+                Connections {
+                    target: text_port
+                    onEditingFinished: {
+                        TCP.Port = text_port.text
                     }
                 }
             }
