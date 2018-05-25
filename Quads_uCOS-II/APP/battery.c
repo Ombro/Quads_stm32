@@ -1,11 +1,11 @@
-/************************* (C) COPYRIGHT 2017 G627 Team **************************
- * ÎÄ¼şÃû	£ºbattery.c
- * ÃèÊö    	£ºµçÔ´µçÁ¿¼ì²â    
- * ÊµÑéÆ½Ì¨	£ºSTM32F103C8T6
- * ¿â°æ±¾	£ºST3.5.0
- * ×÷Õß		£ººÓÍõ
- * QQ		£º345792307
- * ÍÅ¶Ó		£ºG627
+ï»¿/************************* (C) COPYRIGHT 2017 G627 Team **************************
+ * æ–‡ä»¶å	ï¼šbattery.c
+ * æè¿°    	ï¼šç”µæºç”µé‡æ£€æµ‹    
+ * å®éªŒå¹³å°	ï¼šSTM32F103C8T6
+ * åº“ç‰ˆæœ¬	ï¼šST3.5.0
+ * ä½œè€…		ï¼šæ²³ç‹
+ * QQ		ï¼š345792307
+ * å›¢é˜Ÿ		ï¼šG627
 **********************************************************************************/
 
 #include "battery.h"
@@ -18,10 +18,10 @@ extern Flag flag;
 
 
  /*
- * º¯ÊıÃû	£ºBattery_GPIO_Config
- * ÃèÊö		£ºÅäÖÃµç³Ø¹¦ÄÜµÄÏàÓ¦Òı½Å
- * ÊäÈë		£ºÎŞ
- * Êä³ö		£ºÎŞ
+ * å‡½æ•°å	ï¼šBattery_GPIO_Config
+ * æè¿°		ï¼šé…ç½®ç”µæ± åŠŸèƒ½çš„ç›¸åº”å¼•è„š
+ * è¾“å…¥		ï¼šæ— 
+ * è¾“å‡º		ï¼šæ— 
  */
 static void ADC1_GPIO_Config(void)
 {
@@ -38,17 +38,17 @@ static void ADC1_GPIO_Config(void)
 }
 
  /*
- * º¯ÊıÃû	£ºBattery_Config
- * ÃèÊö		£ºÅäÖÃDMA¡¢ADC
- * ÊäÈë		£ºÎŞ
- * Êä³ö		£ºÎŞ
+ * å‡½æ•°å	ï¼šBattery_Config
+ * æè¿°		ï¼šé…ç½®DMAã€ADC
+ * è¾“å…¥		ï¼šæ— 
+ * è¾“å‡º		ï¼šæ— 
  */
 static void Battery_Config(void)
 {
 	DMA_InitTypeDef DMA_InitStructure;
 	ADC_InitTypeDef ADC_InitStructure;
 	
-//	DMAÅäÖÃ
+//	DMAé…ç½®
 	
 	DMA_DeInit(DMA1_Channel1);
 	DMA_InitStructure.DMA_BufferSize = 1;
@@ -67,7 +67,7 @@ static void Battery_Config(void)
 	
     DMA_Init(DMA1_Channel1, &DMA_InitStructure);
     
-//	ADCÅäÖÃ
+//	ADCé…ç½®
 
 	ADC_InitStructure.ADC_ContinuousConvMode = ENABLE;
 	ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;
@@ -78,7 +78,7 @@ static void Battery_Config(void)
 	
 	ADC_Init(ADC1, &ADC_InitStructure);
 	
-//	ÅäÖÃADCÊ±ÖÓ
+//	é…ç½®ADCæ—¶é’Ÿ
 	
 	RCC_ADCCLKConfig(RCC_PCLK2_Div8);
 	ADC_RegularChannelConfig(ADC1, ADC_Channel_1, 1, ADC_SampleTime_55Cycles5);
@@ -87,7 +87,7 @@ static void Battery_Config(void)
 	
 	ADC_Cmd(ADC1, ENABLE);
 	
-//	Ğ£×¼
+//	æ ¡å‡†
 	
 	ADC_ResetCalibration(ADC1);
 	while(ADC_GetResetCalibrationStatus(ADC1));
@@ -105,17 +105,17 @@ void Battery_Init(void)
 }
 
  /*
- * º¯ÊıÃû	£ºBattery_Read
- * ÃèÊö		£º¶ÁÈ¡µç³ØµçÁ¿
- * ÊäÈë		£ºÎŞ
- * Êä³ö		£ºÎŞ
+ * å‡½æ•°å	ï¼šBattery_Read
+ * æè¿°		ï¼šè¯»å–ç”µæ± ç”µé‡
+ * è¾“å…¥		ï¼šæ— 
+ * è¾“å‡º		ï¼šæ— 
  */
 void Battery_Read(void)
 {
 	
 	float voltage = battery.Battery_Value;
 	
-	//µÍÓÚ3.7VÔòÆô¶¯µÍµçÁ¿±¨¾¯
+	//ä½äº3.7Våˆ™å¯åŠ¨ä½ç”µé‡æŠ¥è­¦
 	if(voltage < 3.0)											
 		flag.battery_alarm = 0;												
 	else 

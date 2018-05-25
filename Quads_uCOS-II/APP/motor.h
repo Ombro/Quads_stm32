@@ -1,11 +1,11 @@
 /************************* (C) COPYRIGHT 2017 G627 Team **************************
- * ÎÄ¼þÃû	£ºmotor.h
- * ÃèÊö    	£ºmotor.cµÄÍ·ÎÄ¼þ        
- * ÊµÑéÆ½Ì¨	£ºSTM32F103C8T6
- * ¿â°æ±¾	£ºST3.5.0
- * ×÷Õß		£ººÓÍõ
- * QQ		£º345792307
- * ÍÅ¶Ó		£ºG627
+ * æ–‡ä»¶å	ï¼šmotor.h
+ * æè¿°    	ï¼šmotor.cçš„å¤´æ–‡ä»¶        
+ * å®žéªŒå¹³å°	ï¼šSTM32F103C8T6
+ * åº“ç‰ˆæœ¬	ï¼šST3.5.0
+ * ä½œè€…		ï¼šæ²³çŽ‹
+ * QQ		ï¼š345792307
+ * å›¢é˜Ÿ		ï¼šG627
 **********************************************************************************/
 
 #ifndef __MOTOR_H__
@@ -13,10 +13,11 @@
 
 #include "includes.h"
 
+extern Motor_PWM motor_pwm;
 
 void TIM3_GPIO_Config(void);
 void TIM3_Mode_Config(void);
-void Motor_Init(void);//PWM³õÊ¼»¯
+void Motor_Init(void);//PWMåˆå§‹åŒ–
 void SET_PWM(void);
 void Motor_Out(u8 out1, u8 out2, u8 out3, u8 out4);
 

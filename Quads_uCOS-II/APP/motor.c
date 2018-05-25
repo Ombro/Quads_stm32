@@ -1,25 +1,25 @@
 /************************* (C) COPYRIGHT 2017 G627 Team **************************
- * ÎÄ¼şÃû	£ºmotor.c
- * ÃèÊö    	£ºµç»ú¿ØÖÆ        
- * ÊµÑéÆ½Ì¨	£ºSTM32F103C8T6
- * ¿â°æ±¾	£ºST3.5.0
- * ×÷Õß		£ººÓÍõ
- * QQ		£º345792307
- * ÍÅ¶Ó		£ºG627
+ * æ–‡ä»¶å	ï¼šmotor.c
+ * æè¿°    	ï¼šç”µæœºæ§åˆ¶        
+ * å®éªŒå¹³å°	ï¼šSTM32F103C8T6
+ * åº“ç‰ˆæœ¬	ï¼šST3.5.0
+ * ä½œè€…		ï¼šæ²³ç‹
+ * QQ		ï¼š345792307
+ * å›¢é˜Ÿ		ï¼šG627
 **********************************************************************************/
 #include "motor.h"
 #include "includes.h"
 
-extern Motor_PWM motor_pwm;
+
 TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
 TIM_OCInitTypeDef TIM_OCInitStructure;
 
 
  /*
- * º¯ÊıÃû	£ºTIM3_GPIO_Config
- * ÃèÊö		£ºTIM3Òı½ÅÅäÖÃ£¨PA6,PA7,PB0,PB1£©£¬¶ÔÓ¦Í¨µÀ1-4
- * ÊäÈë		£ºÎŞ
- * Êä³ö		£ºÎŞ
+ * å‡½æ•°å	ï¼šTIM3_GPIO_Config
+ * æè¿°		ï¼šTIM3å¼•è„šé…ç½®ï¼ˆPA6,PA7,PB0,PB1ï¼‰ï¼Œå¯¹åº”é€šé“1-4
+ * è¾“å…¥		ï¼šæ— 
+ * è¾“å‡º		ï¼šæ— 
  */
 void TIM3_GPIO_Config(void)
 {
@@ -39,44 +39,44 @@ void TIM3_GPIO_Config(void)
 }
 
  /*
- * º¯ÊıÃû	£ºTIM3_Mode_Config
- * ÃèÊö		£º¶¨Ê±Æ÷Êä³öPWMÅäÖÃ
- * ÊäÈë		£ºÎŞ
- * Êä³ö		£ºÎŞ
+ * å‡½æ•°å	ï¼šTIM3_Mode_Config
+ * æè¿°		ï¼šå®šæ—¶å™¨è¾“å‡ºPWMé…ç½®
+ * è¾“å…¥		ï¼šæ— 
+ * è¾“å‡º		ï¼šæ— 
  */
 void TIM3_Mode_Config(void)
 {
     
-    TIM_TimeBaseStructure.TIM_Period = 7199; 							//Âö³åÖÜÆÚÎª7199+1
-    TIM_TimeBaseStructure.TIM_Prescaler = 0; 							//²»Ô¤·ÖÆµ£¬72Mhz
-    TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1;				//Ê±ÖÓ·ÖÆµÏµÊı£¬²»·ÖÆµ
-    TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up; 		//ÏòÉÏ¼ÆÊı
-    //TIM_TimeBaseStructure.TIM_RepetitionCounter = 0; 					//ÖØ¸´Òç³ö0´Î·¢ÉúÒç³öÖĞ¶Ï
+    TIM_TimeBaseStructure.TIM_Period = 7199; 							//è„‰å†²å‘¨æœŸä¸º7199+1
+    TIM_TimeBaseStructure.TIM_Prescaler = 0; 							//ä¸é¢„åˆ†é¢‘ï¼Œ72Mhz
+    TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1;				//æ—¶é’Ÿåˆ†é¢‘ç³»æ•°ï¼Œä¸åˆ†é¢‘
+    TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up; 		//å‘ä¸Šè®¡æ•°
+    //TIM_TimeBaseStructure.TIM_RepetitionCounter = 0; 					//é‡å¤æº¢å‡º0æ¬¡å‘ç”Ÿæº¢å‡ºä¸­æ–­
     TIM_TimeBaseInit(TIM3, &TIM_TimeBaseStructure);
 
-    TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1; 					//PWM1ÎªÏòÉÏ¼ÆÊıÊ±£¬TIMx_CNT<TIMx_CCRn,Êä³öÓĞĞ§µçÆ½¡£
-    TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High; 			//¼ÆÊıÆ÷ÊıÖµĞ¡ÓÚCCR1_Val1ÊÇÊä³ö¸ßµçÆ½
+    TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1; 					//PWM1ä¸ºå‘ä¸Šè®¡æ•°æ—¶ï¼ŒTIMx_CNT<TIMx_CCRn,è¾“å‡ºæœ‰æ•ˆç”µå¹³ã€‚
+    TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High; 			//è®¡æ•°å™¨æ•°å€¼å°äºCCR1_Val1æ˜¯è¾“å‡ºé«˜ç”µå¹³
 	
 	
-	//Í¨µÀ1
-    TIM_OC1Init(TIM3, &TIM_OCInitStructure);							//Ê¹ÄÜÍ¨µÀ1£¬¼´PA6
-    TIM_OC1PreloadConfig(TIM3, TIM_OCPreload_Enable);					//Ê¹ÄÜ±È½Ï¼Ä´æÆ÷µÄÔ¤×°ÔØ
-    TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable; 		//Ê¹ÄÜÊä³ö
-	TIM_OCInitStructure.TIM_Pulse = 0; 									//ÉèÖÃÌø±äÖµ£¬¼ÆÊıÆ÷´ïµ½´ËÖµÊ±£¬µçÆ½·¢ÉúÌø±ä
+	//é€šé“1
+    TIM_OC1Init(TIM3, &TIM_OCInitStructure);							//ä½¿èƒ½é€šé“1ï¼Œå³PA6
+    TIM_OC1PreloadConfig(TIM3, TIM_OCPreload_Enable);					//ä½¿èƒ½æ¯”è¾ƒå¯„å­˜å™¨çš„é¢„è£…è½½
+    TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable; 		//ä½¿èƒ½è¾“å‡º
+	TIM_OCInitStructure.TIM_Pulse = 0; 									//è®¾ç½®è·³å˜å€¼ï¼Œè®¡æ•°å™¨è¾¾åˆ°æ­¤å€¼æ—¶ï¼Œç”µå¹³å‘ç”Ÿè·³å˜
 
-	//Í¨µÀ2
+	//é€šé“2
     TIM_OC2Init(TIM3, &TIM_OCInitStructure);
     TIM_OC2PreloadConfig(TIM3, TIM_OCPreload_Enable);
     TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
     TIM_OCInitStructure.TIM_Pulse = 0;
 	
-	//Í¨µÀ3
+	//é€šé“3
     TIM_OC3Init(TIM3, &TIM_OCInitStructure);
     TIM_OC3PreloadConfig(TIM3, TIM_OCPreload_Enable);
     TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
 	TIM_OCInitStructure.TIM_Pulse = 0;
 	
-	//Í¨µÀ4
+	//é€šé“4
     TIM_OC4Init(TIM3, &TIM_OCInitStructure);
     TIM_OC4PreloadConfig(TIM3, TIM_OCPreload_Enable);
     TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
@@ -91,25 +91,25 @@ void TIM3_Mode_Config(void)
 }
 
  /*
- * º¯ÊıÃû	£ºMotor_Init
- * ÃèÊö		£º³õÊ¼»¯µç»úÅäÖÃ
- * ÊäÈë		£ºÎŞ
- * Êä³ö		£ºÎŞ
+ * å‡½æ•°å	ï¼šMotor_Init
+ * æè¿°		ï¼šåˆå§‹åŒ–ç”µæœºé…ç½®
+ * è¾“å…¥		ï¼šæ— 
+ * è¾“å‡º		ï¼šæ— 
  */
-void Motor_Init(void)//PWM³õÊ¼»¯
+void Motor_Init(void)//PWMåˆå§‹åŒ–
 {
     TIM3_GPIO_Config();
     TIM3_Mode_Config();
 }
 
  /*
- * º¯ÊıÃû	£ºMotor_Out
- * ÃèÊö		£ºµç»úpwmÊä³ö
- * ÊäÈë		£ºout1	£ºµç»ú1PWM(0-7199)
-			  out2	£ºµç»ú2PWM
-			  out3	£ºµç»ú3PWM
-			  out4	£ºµç»ú4PWM
- * Êä³ö		£ºÎŞ
+ * å‡½æ•°å	ï¼šMotor_Out
+ * æè¿°		ï¼šç”µæœºpwmè¾“å‡º
+ * è¾“å…¥		ï¼šout1	ï¼šç”µæœº1PWM(0-7199)
+			  out2	ï¼šç”µæœº2PWM
+			  out3	ï¼šç”µæœº3PWM
+			  out4	ï¼šç”µæœº4PWM
+ * è¾“å‡º		ï¼šæ— 
  */
 void Motor_Out(u8 out1, u8 out2, u8 out3, u8 out4)
 {
@@ -121,31 +121,31 @@ void Motor_Out(u8 out1, u8 out2, u8 out3, u8 out4)
 }
 
  /*
- * º¯ÊıÃû	£ºSET_PWM
- * ÃèÊö		£ºÅäÖÃ¶¨Ê±Æ÷pwmÂö¿í
- * ÊäÈë		£ºÎŞ
- * Êä³ö		£ºÎŞ
+ * å‡½æ•°å	ï¼šSET_PWM
+ * æè¿°		ï¼šé…ç½®å®šæ—¶å™¨pwmè„‰å®½
+ * è¾“å…¥		ï¼šæ— 
+ * è¾“å‡º		ï¼šæ— 
  */
 void SET_PWM(void)
 {
-    TIM_OC1Init(TIM3, &TIM_OCInitStructure);							//Ê¹ÄÜÍ¨µÀ1£¬¼´PA6
-    TIM_OC1PreloadConfig(TIM3, TIM_OCPreload_Enable);					//Ê¹ÄÜ±È½Ï¼Ä´æÆ÷µÄÔ¤×°ÔØ
-    TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable; 		//Ê¹ÄÜÊä³ö
-	TIM_OCInitStructure.TIM_Pulse = motor_pwm.pwm1;						//ÉèÖÃÌø±äÖµ£¬¼ÆÊıÆ÷´ïµ½´ËÖµÊ±£¬µçÆ½·¢ÉúÌø±ä
+    TIM_OC1Init(TIM3, &TIM_OCInitStructure);							//ä½¿èƒ½é€šé“1ï¼Œå³PA6
+    TIM_OC1PreloadConfig(TIM3, TIM_OCPreload_Enable);					//ä½¿èƒ½æ¯”è¾ƒå¯„å­˜å™¨çš„é¢„è£…è½½
+    TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable; 		//ä½¿èƒ½è¾“å‡º
+	TIM_OCInitStructure.TIM_Pulse = motor_pwm.pwm1;						//è®¾ç½®è·³å˜å€¼ï¼Œè®¡æ•°å™¨è¾¾åˆ°æ­¤å€¼æ—¶ï¼Œç”µå¹³å‘ç”Ÿè·³å˜
 
-	//Í¨µÀ2
+	//é€šé“2
     TIM_OC2Init(TIM3, &TIM_OCInitStructure);
     TIM_OC2PreloadConfig(TIM3, TIM_OCPreload_Enable);
     TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
     TIM_OCInitStructure.TIM_Pulse = motor_pwm.pwm2;
 	
-	//Í¨µÀ3
+	//é€šé“3
     TIM_OC3Init(TIM3, &TIM_OCInitStructure);
     TIM_OC3PreloadConfig(TIM3, TIM_OCPreload_Enable);
     TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
 	TIM_OCInitStructure.TIM_Pulse = motor_pwm.pwm3;
 	
-	//Í¨µÀ4
+	//é€šé“4
     TIM_OC4Init(TIM3, &TIM_OCInitStructure);
     TIM_OC4PreloadConfig(TIM3, TIM_OCPreload_Enable);
     TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;

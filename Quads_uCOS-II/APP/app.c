@@ -1,11 +1,11 @@
-/************************* (C) COPYRIGHT 2017 G627 Team **************************
- * ÎÄ¼şÃû	£ºapp.c
- * ÃèÊö    	£ºÓÃ»§Ïà¹Ø³ÌĞò£¬¼´ÈÎÎñ   
- * ÊµÑéÆ½Ì¨	£ºSTM32F103C8T6
- * ¿â°æ±¾	£ºST3.5.0
- * ×÷Õß		£ººÓÍõ
- * QQ		£º345792307
- * ÍÅ¶Ó		£ºG627
+ï»¿/************************* (C) COPYRIGHT 2017 G627 Team **************************
+ * æ–‡ä»¶å	ï¼šapp.c
+ * æè¿°    	ï¼šç”¨æˆ·ç›¸å…³ç¨‹åºï¼Œå³ä»»åŠ¡   
+ * å®éªŒå¹³å°	ï¼šSTM32F103C8T6
+ * åº“ç‰ˆæœ¬	ï¼šST3.5.0
+ * ä½œè€…		ï¼šæ²³ç‹
+ * QQ		ï¼š345792307
+ * å›¢é˜Ÿ		ï¼šG627
 **********************************************************************************/
 
 #include "includes.h"
@@ -18,8 +18,8 @@ float temp;
 int i=0;
 
 
-extern char USART_TxBuffer[USART_TxBuffer_Size];			//½ÓÊÕÊı¾İÊı×é
-extern char USART_RxBuffer[USART_RxBuffer_Size];			//·¢ËÍÊı¾İÊı×é
+extern char USART_TxBuffer[USART_TxBuffer_Size];			//æ¥æ”¶æ•°æ®æ•°ç»„
+extern char USART_RxBuffer[USART_RxBuffer_Size];			//å‘é€æ•°æ®æ•°ç»„
 
 
 void Task_LED1(void *p_arg)
@@ -56,10 +56,10 @@ void Task_LED2(void *p_arg)
     while(1)
     {
 		GPIO_ResetBits(GPIOC, GPIO_Pin_13);
-		printf("µÆÁÁÁË\n");
+		printf("ç¯äº®äº†\n");
         OSTimeDlyHMSM(0,0,0,500);
         GPIO_SetBits(GPIOC, GPIO_Pin_13);
-		printf("µÆÃğÁË\n");
+		printf("ç¯ç­äº†\n");
         OSTimeDlyHMSM(0,0,0,500);
     }
 }

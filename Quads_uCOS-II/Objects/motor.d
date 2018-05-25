@@ -50,3 +50,4 @@
 .\objects\motor.o: .\implements\kalman.h
 .\objects\motor.o: .\implements\usart.h
 .\objects\motor.o: .\implements\debug.h
+.\objects\motor.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

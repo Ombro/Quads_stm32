@@ -50,3 +50,4 @@
 .\objects\stm32f10x_it.o: .\implements\kalman.h
 .\objects\stm32f10x_it.o: .\implements\usart.h
 .\objects\stm32f10x_it.o: .\implements\debug.h
+.\objects\stm32f10x_it.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

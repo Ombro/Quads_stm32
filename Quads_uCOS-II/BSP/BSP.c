@@ -1,31 +1,31 @@
-/************************* (C) COPYRIGHT 2017 G627 Team **************************
- * ÎÄ¼þÃû	£ºBSP.c
- * ÃèÊö    	£º³õÊ¼»¯²¢ÅäÖÃµ¥Æ¬»ú
- * ÊµÑéÆ½Ì¨	£ºSTM32F103C8T6
- * ¿â°æ±¾	£ºST3.5.0
- * ×÷Õß		£ººÓÍõ
- * QQ		£º345792307
- * ÍÅ¶Ó		£ºG627
+ï»¿/************************* (C) COPYRIGHT 2017 G627 Team **************************
+ * æ–‡ä»¶å	ï¼šBSP.c
+ * æè¿°    	ï¼šåˆå§‹åŒ–å¹¶é…ç½®å•ç‰‡æœº
+ * å®žéªŒå¹³å°	ï¼šSTM32F103C8T6
+ * åº“ç‰ˆæœ¬	ï¼šST3.5.0
+ * ä½œè€…		ï¼šæ²³çŽ‹
+ * QQ		ï¼š345792307
+ * å›¢é˜Ÿ		ï¼šG627
 **********************************************************************************/
 
 #include "includes.h"
 
 /*
-* º¯ÊýÃû		£ºSysTick_init
-* ÃèÊö		£º³õÊ¼»¯²¢Ê¹ÄÜSysTick¶¨Ê±Æ÷
-* ÊäÈë		£ºÎÞ
-* Êä³ö		£ºÎÞ
+* å‡½æ•°å		ï¼šSysTick_init
+* æè¿°		ï¼šåˆå§‹åŒ–å¹¶ä½¿èƒ½SysTickå®šæ—¶å™¨
+* è¾“å…¥		ï¼šæ— 
+* è¾“å‡º		ï¼šæ— 
 */
 void SysTick_init(void)
 {
-    SysTick_Config(SystemCoreClock / OS_TICKS_PER_SEC);//³õÊ¼»¯²¢Ê¹ÄÜSysTick¶¨Ê±Æ÷
+    SysTick_Config(SystemCoreClock / OS_TICKS_PER_SEC);//åˆå§‹åŒ–å¹¶ä½¿èƒ½SysTickå®šæ—¶å™¨
 }
 
 /*
-* º¯ÊýÃû		£ºBSP_Init
-* ÃèÊö		£º³õÊ¼»¯²¢ÅäÖÃµ¥Æ¬»ú
-* ÊäÈë		£ºÎÞ
-* Êä³ö		£ºÎÞ
+* å‡½æ•°å		ï¼šBSP_Init
+* æè¿°		ï¼šåˆå§‹åŒ–å¹¶é…ç½®å•ç‰‡æœº
+* è¾“å…¥		ï¼šæ— 
+* è¾“å‡º		ï¼šæ— 
 */
 void BSP_Init(void)
 {
@@ -40,10 +40,10 @@ void BSP_Init(void)
 }
 
 /*
-* º¯ÊýÃû		£ºLED_Init
-* ÃèÊö		£º³õÊ¼»¯LED
-* ÊäÈë		£ºÎÞ
-* Êä³ö		£ºÎÞ
+* å‡½æ•°å		ï¼šLED_Init
+* æè¿°		ï¼šåˆå§‹åŒ–LED
+* è¾“å…¥		ï¼šæ— 
+* è¾“å‡º		ï¼šæ— 
 */
 void LED_Init(void)
 {

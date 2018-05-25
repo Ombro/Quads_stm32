@@ -1,27 +1,30 @@
-/************************* (C) COPYRIGHT 2017 G627 Team **************************
- * ÎÄ¼þÃû	£ºGlobal_Variable_Struct.c
- * ÃèÊö    	£ºÈ«¾Ö±äÁ¿½á¹¹Ìå 
- * ÊµÑéÆ½Ì¨	£ºSTM32F103C8T6
- * ¿â°æ±¾	£ºST3.5.0
- * ×÷Õß		£ººÓÍõ
- * QQ		£º345792307
- * ÍÅ¶Ó		£ºG627
+ï»¿/************************* (C) COPYRIGHT 2017 G627 Team **************************
+ * æ–‡ä»¶å	ï¼šGlobal_Variable_Struct.c
+ * æè¿°    	ï¼šå…¨å±€å˜é‡ç»“æž„ä½“ 
+ * å®žéªŒå¹³å°	ï¼šSTM32F103C8T6
+ * åº“ç‰ˆæœ¬	ï¼šST3.5.0
+ * ä½œè€…		ï¼šæ²³çŽ‹
+ * QQ		ï¼š345792307
+ * å›¢é˜Ÿ		ï¼šG627
 **********************************************************************************/
 #include "Global_Variable_Struct.h"
 
-//MPU9250Êý¾Ý
+//MPU9250æ•°æ®
 MPU9250_Data mpu;
 
-//µç³Ø
+//ç”µæ± 
 Battery battery;
 
-//±êÖ¾Î»
+//æ ‡å¿—ä½
 Flag flag;
 
-//µç»úpwm
+//ç”µæœºpwm
 Motor_PWM motor_pwm;
 
-//¿¨¶ûÂüÂË²¨±äÁ¿
+//å¡å°”æ›¼æ»¤æ³¢å˜é‡
 Kalman kalman;
+
+//PIDå‚æ•°
+PID pid;
 
 /************************* (C) COPYRIGHT 2017 G627 Team **************************/

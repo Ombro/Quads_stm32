@@ -50,3 +50,4 @@
 .\objects\delay.o: .\implements\kalman.h
 .\objects\delay.o: .\implements\usart.h
 .\objects\delay.o: .\implements\debug.h
+.\objects\delay.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

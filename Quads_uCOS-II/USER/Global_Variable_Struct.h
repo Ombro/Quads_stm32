@@ -1,23 +1,23 @@
-/************************* (C) COPYRIGHT 2017 G627 Team **************************
- * ÎÄ¼şÃû	£ºGlobal_Variable_Struct.h
- * ÃèÊö    	£ºÈ«¾Ö±äÁ¿½á¹¹Ìå  
- * ÊµÑéÆ½Ì¨	£ºSTM32F103C8T6
- * ¿â°æ±¾	£ºST3.5.0
- * ×÷Õß		£ººÓÍõ
- * QQ		£º345792307
- * ÍÅ¶Ó		£ºG627
+ï»¿/************************* (C) COPYRIGHT 2017 G627 Team **************************
+ * æ–‡ä»¶å	ï¼šGlobal_Variable_Struct.h
+ * æè¿°    	ï¼šå…¨å±€å˜é‡ç»“æ„ä½“  
+ * å®éªŒå¹³å°	ï¼šSTM32F103C8T6
+ * åº“ç‰ˆæœ¬	ï¼šST3.5.0
+ * ä½œè€…		ï¼šæ²³ç‹
+ * QQ		ï¼š345792307
+ * å›¢é˜Ÿ		ï¼šG627
 **********************************************************************************/
 
 
-//MPU9250Êı¾İ
+//MPU9250æ•°æ®
 typedef struct
 {
-	short Raw_Value[9];			//Ô­Ê¼Öµ
-	float Motion_9[9];			//¾ÅÖáÊı¾İ
+	short Raw_Value[9];			//åŸå§‹å€¼
+	float Motion_9[9];			//ä¹è½´æ•°æ®
 }MPU9250_Data;
 
 
-//µç³ØµçÁ¿
+//ç”µæ± ç”µé‡
 typedef struct
 {
 	unsigned int Battery_Value;
@@ -25,14 +25,14 @@ typedef struct
 }Battery;
 
 
-//±êÖ¾Î»
+//æ ‡å¿—ä½
 typedef struct
 {
-	volatile unsigned char battery_alarm;	//µçÁ¿±¨¾¯±ê¼ÇÎ»
+	volatile unsigned char battery_alarm;	//ç”µé‡æŠ¥è­¦æ ‡è®°ä½
 }Flag;
 
 
-//µç»úpwm
+//ç”µæœºpwm
 typedef struct
 {
 	unsigned char pwm1; 
@@ -42,40 +42,63 @@ typedef struct
 }Motor_PWM;
 
 
-//Ã¿¸öÖá¶ÔÓ¦µÄ¿¨¶ûÂü±äÁ¿
+//æ¯ä¸ªè½´å¯¹åº”çš„å¡å°”æ›¼å˜é‡
 typedef struct
 {
-	float omega;				//½ÇËÙ¶È
-	float omega_error;			//½ÇËÙ¶ÈÎó²î
-	float estimate_angle;		//Ô¤²âÖµ	
-	float observation_angle;	//¹Û²ìÖµ
-	float A[2][2];				//×´Ì¬×ªÒÆ¾ØÕó
-	float P[2][2];				//ÂË²¨Æ÷Îó²î´«µİµÄĞ­·½²î¾ØÕó
-	float Q[2][2];				//×´Ì¬×ªÒÆÎó²îĞ­·½²î¾ØÕó
-	float H[2];					//¹Û²ìÖµÎª±êÁ¿£¬×´Ì¬ÁĞÏòÁ¿ÎªÊ¸Á¿£¬ËùÒÔHÎªÒ»¸ö¶şÎ¬ĞĞÏòÁ¿£¬[1 0]
-	float R;					//¹Û²ì½Ç¶È·½²î£¨Ô­Îª¹Û²âÔëÉùĞ­·½²î¾ØÕó£¬µ«ÓÉÓÚ¹Û²ìÖµÎª±êÁ¿£¬ËùÒÔRÎª±êÁ¿£¬¼´ÊÇ¹Û²ìÖµµÄ·½²î£©
-	float k_gain[2];			//¿¨¶ûÂüÔöÒæ
-	float optimum_angle;		//×îÓÅ½Ç¶È
-	float optimum_omega;		//×îÓÅ½ÇËÙ¶È
+	float omega;				//è§’é€Ÿåº¦
+	float omega_error;			//è§’é€Ÿåº¦è¯¯å·®
+	float estimate_angle;		//é¢„æµ‹å€¼	
+	float observation_angle;	//è§‚å¯Ÿå€¼
+	float A[2][2];				//çŠ¶æ€è½¬ç§»çŸ©é˜µ
+	float P[2][2];				//æ»¤æ³¢å™¨è¯¯å·®ä¼ é€’çš„åæ–¹å·®çŸ©é˜µ
+	float Q[2][2];				//çŠ¶æ€è½¬ç§»è¯¯å·®åæ–¹å·®çŸ©é˜µ
+	float H[2];					//è§‚å¯Ÿå€¼ä¸ºæ ‡é‡ï¼ŒçŠ¶æ€åˆ—å‘é‡ä¸ºçŸ¢é‡ï¼Œæ‰€ä»¥Hä¸ºä¸€ä¸ªäºŒç»´è¡Œå‘é‡ï¼Œ[1 0]
+	float R;					//è§‚å¯Ÿè§’åº¦æ–¹å·®ï¼ˆåŸä¸ºè§‚æµ‹å™ªå£°åæ–¹å·®çŸ©é˜µï¼Œä½†ç”±äºè§‚å¯Ÿå€¼ä¸ºæ ‡é‡ï¼Œæ‰€ä»¥Rä¸ºæ ‡é‡ï¼Œå³æ˜¯è§‚å¯Ÿå€¼çš„æ–¹å·®ï¼‰
+	float k_gain[2];			//å¡å°”æ›¼å¢ç›Š
+	float optimum_angle;		//æœ€ä¼˜è§’åº¦
+	float optimum_omega;		//æœ€ä¼˜è§’é€Ÿåº¦
 }Axis;
 
 
-//¿¨¶ûÂüÂË²¨
+//å¡å°”æ›¼æ»¤æ³¢
 typedef struct
 {
 	Axis x;
 	Axis y;
 	Axis z;
-	float dt;					//²ÉÑùÖÜÆÚ
+	float dt;					//é‡‡æ ·å‘¨æœŸ
 }Kalman;
 
 
-//PID¿ØÖÆ²ÎÊı
 typedef struct
 {
-	float Kp;
-	float Ki;
-	float Kd;
+	float x[5];
+	float y[5];
 }PID;
+
+//PIDå¤–ç¯
+//typedef struct
+//{
+//	float p;
+//	float i;
+////	float d;
+//}Shell;
+
+////PIDå†…ç¯
+//typedef struct
+//{
+//	float p;
+//	float i;
+//	float d;
+//}Core;
+
+////PIDæ§åˆ¶å‚æ•°
+//typedef struct
+//{
+//	Shell shell;
+//	Core core;
+//}PID;
+
+
 
 /************************* (C) COPYRIGHT 2017 G627 Team **************************/

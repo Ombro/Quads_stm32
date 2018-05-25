@@ -49,3 +49,4 @@
 .\objects\bsp.o: .\implements\kalman.h
 .\objects\bsp.o: .\implements\usart.h
 .\objects\bsp.o: .\implements\debug.h
+.\objects\bsp.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

@@ -1,18 +1,18 @@
-/************************* (C) COPYRIGHT 2017 G627 Team **************************
- * ÎÄ¼şÃû	£º
- * ÃèÊö    	£º        
- * ÊµÑéÆ½Ì¨	£ºSTM32F103C8T6
- * ¿â°æ±¾	£ºST3.5.0
- * ×÷Õß		£ººÓÍõ
- * QQ		£º345792307
- * ÍÅ¶Ó		£ºG627
+ï»¿/************************* (C) COPYRIGHT 2017 G627 Team **************************
+ * æ–‡ä»¶å	ï¼š
+ * æè¿°    	ï¼š        
+ * å®éªŒå¹³å°	ï¼šSTM32F103C8T6
+ * åº“ç‰ˆæœ¬	ï¼šST3.5.0
+ * ä½œè€…		ï¼šæ²³ç‹
+ * QQ		ï¼š345792307
+ * å›¢é˜Ÿ		ï¼šG627
 **********************************************************************************/
 
 #include "usart.h"
 
-DMA_InitTypeDef USART_DMA_InitStructure;			//´®¿ÚDMAÅäÖÃ½á¹¹Ìå
-char USART_TxBuffer[USART_TxBuffer_Size];			//·¢ËÍÊı¾İÊı×é
-char USART_RxBuffer[USART_RxBuffer_Size];			//½ÓÊÕÊı¾İÊı×é
+DMA_InitTypeDef USART_DMA_InitStructure;			//ä¸²å£DMAé…ç½®ç»“æ„ä½“
+char USART_TxBuffer[USART_TxBuffer_Size];			//å‘é€æ•°æ®æ•°ç»„
+char USART_RxBuffer[USART_RxBuffer_Size];			//æ¥æ”¶æ•°æ®æ•°ç»„
 
 
 struct __FILE
@@ -24,16 +24,16 @@ FILE __stdin;
 
 
  /*
- * º¯ÊıÃû	£ºSendChar
- * ÃèÊö		£ºÖØ¶¨ÏòprintfÊ¹ÓÃµÄÊä³öº¯Êı
- * ÊäÈë		£ºÎŞ
- * Êä³ö		£ºÎŞ
+ * å‡½æ•°å	ï¼šSendChar
+ * æè¿°		ï¼šé‡å®šå‘printfä½¿ç”¨çš„è¾“å‡ºå‡½æ•°
+ * è¾“å…¥		ï¼šæ— 
+ * è¾“å‡º		ï¼šæ— 
  */
 int SendChar(int ch)
 {
-    /* ·¢ËÍÒ»¸ö×Ö½ÚÊı¾İµ½USART */
+    /* å‘é€ä¸€ä¸ªå­—èŠ‚æ•°æ®åˆ°USART */
     USART_SendData(USART1, (uint8_t) ch);
-    /* µÈ´ı·¢ËÍÍê±Ï */
+    /* ç­‰å¾…å‘é€å®Œæ¯• */
     while (USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET);
 
     return (ch);
@@ -41,14 +41,14 @@ int SendChar(int ch)
 
 
  /*
- * º¯ÊıÃû	£ºGetKey
- * ÃèÊö		£º²¶»ñ´®¿ÚÊäÈëµÄÊı¾İ
- * ÊäÈë		£ºÎŞ
- * Êä³ö		£ºÎŞ
+ * å‡½æ•°å	ï¼šGetKey
+ * æè¿°		ï¼šæ•è·ä¸²å£è¾“å…¥çš„æ•°æ®
+ * è¾“å…¥		ï¼šæ— 
+ * è¾“å‡º		ï¼šæ— 
  */
 int GetKey(void)
 {
-    /* µÈ´ı´®¿ÚÊäÈëÊı¾İ */
+    /* ç­‰å¾…ä¸²å£è¾“å…¥æ•°æ® */
     while (USART_GetFlagStatus(USART1, USART_FLAG_RXNE) == RESET);
 
     return (int)USART_ReceiveData(USART1);
@@ -56,10 +56,10 @@ int GetKey(void)
 
 
  /*
- * º¯ÊıÃû	£ºusart_Init
- * ÃèÊö		£º³õÊ¼»¯´®¿Ú
- * ÊäÈë		£ºBaudRate - ²¨ÌØÂÊ
- * Êä³ö		£ºÎŞ
+ * å‡½æ•°å	ï¼šusart_Init
+ * æè¿°		ï¼šåˆå§‹åŒ–ä¸²å£
+ * è¾“å…¥		ï¼šBaudRate - æ³¢ç‰¹ç‡
+ * è¾“å‡º		ï¼šæ— 
  */
 void usart_Init(u32 BaudRate)
 {
@@ -94,10 +94,10 @@ void usart_Init(u32 BaudRate)
 
 
  /*
- * º¯ÊıÃû	£ºUSART_DMA
- * ÃèÊö		£º´®¿ÚDMAÅäÖÃ£¨RX£©
- * ÊäÈë		£ºÎŞ
- * Êä³ö		£ºÎŞ
+ * å‡½æ•°å	ï¼šUSART_DMA
+ * æè¿°		ï¼šä¸²å£DMAé…ç½®ï¼ˆRXï¼‰
+ * è¾“å…¥		ï¼šæ— 
+ * è¾“å‡º		ï¼šæ— 
  */
 void USART_DMA(void)
 {

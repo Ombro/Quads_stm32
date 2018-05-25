@@ -51,3 +51,4 @@
 .\objects\battery.o: .\implements\kalman.h
 .\objects\battery.o: .\implements\usart.h
 .\objects\battery.o: .\implements\debug.h
+.\objects\battery.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

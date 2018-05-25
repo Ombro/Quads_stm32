@@ -51,3 +51,4 @@
 .\objects\iic.o: .\implements\kalman.h
 .\objects\iic.o: .\implements\usart.h
 .\objects\iic.o: .\implements\debug.h
+.\objects\iic.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

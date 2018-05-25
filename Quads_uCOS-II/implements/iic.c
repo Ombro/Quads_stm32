@@ -1,21 +1,21 @@
-/************************* (C) COPYRIGHT 2017 G627 Team **************************
- * ÎÄ¼şÃû	£º
- * ÃèÊö    	£º        
- * ÊµÑéÆ½Ì¨	£ºSTM32F103C8T6
- * ¿â°æ±¾	£ºST3.5.0
- * ×÷Õß		£ººÓÍõ
- * QQ		£º345792307
- * ÍÅ¶Ó		£ºG627
+ï»¿/************************* (C) COPYRIGHT 2017 G627 Team **************************
+ * æ–‡ä»¶å	ï¼š
+ * æè¿°    	ï¼š        
+ * å®éªŒå¹³å°	ï¼šSTM32F103C8T6
+ * åº“ç‰ˆæœ¬	ï¼šST3.5.0
+ * ä½œè€…		ï¼šæ²³ç‹
+ * QQ		ï¼š345792307
+ * å›¢é˜Ÿ		ï¼šG627
 **********************************************************************************/
 
 #include "stm32f10x_gpio.h"
 #include "iic.h"
 
  /*
- * º¯ÊıÃû	£ºIIC_delay
- * ÃèÊö		£ºÑÓÊ±º¯Êı£¬12´Î×ÔÔöÊ±¼äÎª1us
- * ÊäÈë		£ºÎŞ
- * Êä³ö		£ºÎŞ
+ * å‡½æ•°å	ï¼šIIC_delay
+ * æè¿°		ï¼šå»¶æ—¶å‡½æ•°ï¼Œ12æ¬¡è‡ªå¢æ—¶é—´ä¸º1us
+ * è¾“å…¥		ï¼šæ— 
+ * è¾“å‡º		ï¼šæ— 
  */
 void IIC_delay(void)
 {
@@ -27,10 +27,10 @@ void IIC_delay(void)
 }
 
  /*
- * º¯ÊıÃû	£ºIIC_Init
- * ÃèÊö		£ºÅäÖÃIICÒı½Å
- * ÊäÈë		£ºÎŞ
- * Êä³ö		£ºÎŞ
+ * å‡½æ•°å	ï¼šIIC_Init
+ * æè¿°		ï¼šé…ç½®IICå¼•è„š
+ * è¾“å…¥		ï¼šæ— 
+ * è¾“å‡º		ï¼šæ— 
  */
 void IIC_Init(void)
 {
@@ -47,26 +47,26 @@ void IIC_Init(void)
 }
 
  /*
- * º¯ÊıÃû	£ºIIC_Start
- * ÃèÊö		£º´ò¿ªIIC×ÜÏß
- * ÊäÈë		£ºÎŞ
- * Êä³ö		£º0-Õı³£, 1-Òì³£
+ * å‡½æ•°å	ï¼šIIC_Start
+ * æè¿°		ï¼šæ‰“å¼€IICæ€»çº¿
+ * è¾“å…¥		ï¼šæ— 
+ * è¾“å‡º		ï¼š0-æ­£å¸¸, 1-å¼‚å¸¸
  */ 
 u8 IIC_Start(void)
 {
 	SDA_H();
     SCL_H();
     IIC_delay();
-    if(!SDA_read())			//SDAÏßÎªµÍµçÆ½Ôò×ÜÏßÃ¦,ÍË³ö
+    if(!SDA_read())			//SDAçº¿ä¸ºä½ç”µå¹³åˆ™æ€»çº¿å¿™,é€€å‡º
 	{
-		printf("SDAÏßÎªµÍµçÆ½,×ÜÏßÃ¦!\n");
+		printf("SDAçº¿ä¸ºä½ç”µå¹³,æ€»çº¿å¿™!\n");
 		return 1;
 	}
     SDA_L();
     IIC_delay();
-    if(SDA_read()) 			//SDAÏßÎª¸ßµçÆ½Ôò×ÜÏß³ö´í,ÍË³ö
+    if(SDA_read()) 			//SDAçº¿ä¸ºé«˜ç”µå¹³åˆ™æ€»çº¿å‡ºé”™,é€€å‡º
 	{
-		printf("SDAÏßÎª¸ßµçÆ½,×ÜÏß³ö´í!\n");
+		printf("SDAçº¿ä¸ºé«˜ç”µå¹³,æ€»çº¿å‡ºé”™!\n");
 		return 1;	
     }
 	SDA_L();
@@ -75,10 +75,10 @@ u8 IIC_Start(void)
 }
 
  /*
- * º¯ÊıÃû	£ºIIC_Free
- * ÃèÊö		£º½áÊøÍ¨Ñ¶£¬ÊÍ·ÅIIC×ÜÏß
- * ÊäÈë		£ºÎŞ
- * Êä³ö		£ºÎŞ
+ * å‡½æ•°å	ï¼šIIC_Free
+ * æè¿°		ï¼šç»“æŸé€šè®¯ï¼Œé‡Šæ”¾IICæ€»çº¿
+ * è¾“å…¥		ï¼šæ— 
+ * è¾“å‡º		ï¼šæ— 
  */
 void IIC_Free(void)
 {
@@ -93,10 +93,10 @@ void IIC_Free(void)
 }
 
  /*
- * º¯ÊıÃû	£ºIIC_ACK
- * ÃèÊö		£ºÔÊĞí´Ó»úÓ¦´ğ
- * ÊäÈë		£ºÎŞ
- * Êä³ö		£ºÎŞ
+ * å‡½æ•°å	ï¼šIIC_ACK
+ * æè¿°		ï¼šå…è®¸ä»æœºåº”ç­”
+ * è¾“å…¥		ï¼šæ— 
+ * è¾“å‡º		ï¼šæ— 
  */
 void IIC_ACK(void)
 {
@@ -111,10 +111,10 @@ void IIC_ACK(void)
 }
 
  /*
- * º¯ÊıÃû	£ºIIC_NACK
- * ÃèÊö		£º²»ÔÊĞí´Ó»úÓ¦´ğ£¬¼´ÊÍ·ÅIIC×ÜÏß
- * ÊäÈë		£ºÎŞ
- * Êä³ö		£ºÎŞ
+ * å‡½æ•°å	ï¼šIIC_NACK
+ * æè¿°		ï¼šä¸å…è®¸ä»æœºåº”ç­”ï¼Œå³é‡Šæ”¾IICæ€»çº¿
+ * è¾“å…¥		ï¼šæ— 
+ * è¾“å‡º		ï¼šæ— 
  */
 void IIC_NACK(void)
 {
@@ -129,10 +129,10 @@ void IIC_NACK(void)
 }
 
  /*
- * º¯ÊıÃû	£ºIIC_Wait_ACK
- * ÃèÊö		£ºÅĞ¶Ï´Ó»úÊÇ·ñ·µ»ØACKĞÅºÅ
- * ÊäÈë		£ºÎŞ
- * Êä³ö		£º0-ÓĞACK£¬ 1-ÎŞACK
+ * å‡½æ•°å	ï¼šIIC_Wait_ACK
+ * æè¿°		ï¼šåˆ¤æ–­ä»æœºæ˜¯å¦è¿”å›ACKä¿¡å·
+ * è¾“å…¥		ï¼šæ— 
+ * è¾“å‡º		ï¼š0-æœ‰ACKï¼Œ 1-æ— ACK
  */
 u8 IIC_Wait_ACK(void)
 {
@@ -149,22 +149,22 @@ u8 IIC_Wait_ACK(void)
 		if(time>255)
 		{
 			IIC_Free();
-			printf("´Ó»úÎŞÓ¦´ğ!\n");
+			printf("ä»æœºæ— åº”ç­”!\n");
 			return 1;
 		}
 		IIC_delay();
 	}
-//	printf("Ö÷»úÊÕµ½Ó¦´ğ!\n");
+//	printf("ä¸»æœºæ”¶åˆ°åº”ç­”!\n");
 	SCL_L();
 	IIC_delay();
 	return 0;
 }
 
  /*
- * º¯ÊıÃû	£ºIIC_Send_Byte
- * ÃèÊö		£º·¢ËÍÒ»¸ö×Ö½Ú£¨8Bit£©µÄÊı¾İSendByte£¬´Ó¸ßÎ»µ½µÍÎ»
- * ÊäÈë		£ºÎŞ
- * Êä³ö		£ºÎŞ
+ * å‡½æ•°å	ï¼šIIC_Send_Byte
+ * æè¿°		ï¼šå‘é€ä¸€ä¸ªå­—èŠ‚ï¼ˆ8Bitï¼‰çš„æ•°æ®SendByteï¼Œä»é«˜ä½åˆ°ä½ä½
+ * è¾“å…¥		ï¼šæ— 
+ * è¾“å‡º		ï¼šæ— 
  */
 void IIC_Send_Byte(unsigned char SendByte)
 {
@@ -186,10 +186,10 @@ void IIC_Send_Byte(unsigned char SendByte)
 }
 
  /*
- * º¯ÊıÃû	£ºIIC_Recive_Byte
- * ÃèÊö		£º·µ»Ø´Ó»ú´«ÊäµÄÊı¾İ
- * ÊäÈë		£ºÎŞ
- * Êä³ö		£ºReceiveByte	£º´Ó»ú·µ»ØµÄÊı¾İ
+ * å‡½æ•°å	ï¼šIIC_Recive_Byte
+ * æè¿°		ï¼šè¿”å›ä»æœºä¼ è¾“çš„æ•°æ®
+ * è¾“å…¥		ï¼šæ— 
+ * è¾“å‡º		ï¼šReceiveByte	ï¼šä»æœºè¿”å›çš„æ•°æ®
  */
 unsigned char IIC_Recive_Byte(void)
 {
@@ -214,34 +214,34 @@ unsigned char IIC_Recive_Byte(void)
 }
 
  /*
- * º¯ÊıÃû	£ºIIC_Single_Write
- * ÃèÊö		£º·¢ËÍÉè±¸µØÖ·+Ğ´ĞÅºÅ
-			  Ñ¡ÖĞÒ»¸ö´Ó»ú£¬²¢ÏòÖ¸¶¨µÄµØÖ·Ğ´ÈëÒ»¸ö×Ö½Ú
- * ÊäÈë		£ºSlaveAddress	£º´Ó»úµØÖ·
-			  REG_Address	£º´Ó»ú¼Ä´æÆ÷µØÖ·
-			  REG_data		£º¼Ä´æÆ÷ÃüÁî
- * Êä³ö		£º0-Õı³£, 1-Òì³£
+ * å‡½æ•°å	ï¼šIIC_Single_Write
+ * æè¿°		ï¼šå‘é€è®¾å¤‡åœ°å€+å†™ä¿¡å·
+			  é€‰ä¸­ä¸€ä¸ªä»æœºï¼Œå¹¶å‘æŒ‡å®šçš„åœ°å€å†™å…¥ä¸€ä¸ªå­—èŠ‚
+ * è¾“å…¥		ï¼šSlaveAddress	ï¼šä»æœºåœ°å€
+			  REG_Address	ï¼šä»æœºå¯„å­˜å™¨åœ°å€
+			  REG_data		ï¼šå¯„å­˜å™¨å‘½ä»¤
+ * è¾“å‡º		ï¼š0-æ­£å¸¸, 1-å¼‚å¸¸
  */
 unsigned char IIC_Single_Write(unsigned char SlaveAddress, unsigned char REG_Address, unsigned char REG_data)
 {
     if(IIC_Start())
 		return 1;
-    IIC_Send_Byte(SlaveAddress<<1); 	//·¢ËÍÉè±¸µØÖ·£¨¸ßÎ»µ½µÍÎ»£©
+    IIC_Send_Byte(SlaveAddress<<1); 	//å‘é€è®¾å¤‡åœ°å€ï¼ˆé«˜ä½åˆ°ä½ä½ï¼‰
     if(IIC_Wait_ACK())
     {
         IIC_Free();
         return 1;
     }
-    IIC_Send_Byte(REG_Address );   		//ÉèÖÃµÍÆğÊ¼µØÖ·
+    IIC_Send_Byte(REG_Address );   		//è®¾ç½®ä½èµ·å§‹åœ°å€
     if(IIC_Wait_ACK())
 	{
-		printf("Êı¾İ·¢ËÍÊ§°Ü£¡\n");
+		printf("æ•°æ®å‘é€å¤±è´¥ï¼\n");
 		return 1;
 	}
     IIC_Send_Byte(REG_data);
     if(IIC_Wait_ACK())
 	{
-		printf("Êı¾İ·¢ËÍÊ§°Ü£¡\n");
+		printf("æ•°æ®å‘é€å¤±è´¥ï¼\n");
 		return 1;
 	}
 	delay_us(10000);
@@ -250,13 +250,13 @@ unsigned char IIC_Single_Write(unsigned char SlaveAddress, unsigned char REG_Add
 }
 
  /*
- * º¯ÊıÃû	£ºIIC_Single_Read
- * ÃèÊö		£º·¢ËÍÉè±¸µØÖ·+¶ÁĞÅºÅ
-			  Ñ¡ÖĞÒ»¸ö´Ó»ú£¬²¢ÏòÖ¸¶¨µÄµØÖ·¶Á³öÒ»¸ö×Ö½Ú
- * ÊäÈë		£ºSlaveAddress	£º´Ó»úµØÖ·
-			  REG_Address	£º´Ó»ú¼Ä´æÆ÷µØÖ·
- * Êä³ö		£ºREG_data		£º´Ó»ú¼Ä´æÆ÷µØÖ·´¢´æµÄÖµ
-			  1				£ºÒì³£
+ * å‡½æ•°å	ï¼šIIC_Single_Read
+ * æè¿°		ï¼šå‘é€è®¾å¤‡åœ°å€+è¯»ä¿¡å·
+			  é€‰ä¸­ä¸€ä¸ªä»æœºï¼Œå¹¶å‘æŒ‡å®šçš„åœ°å€è¯»å‡ºä¸€ä¸ªå­—èŠ‚
+ * è¾“å…¥		ï¼šSlaveAddress	ï¼šä»æœºåœ°å€
+			  REG_Address	ï¼šä»æœºå¯„å­˜å™¨åœ°å€
+ * è¾“å‡º		ï¼šREG_data		ï¼šä»æœºå¯„å­˜å™¨åœ°å€å‚¨å­˜çš„å€¼
+			  1				ï¼šå¼‚å¸¸
  */
 unsigned char IIC_Single_Read(unsigned char SlaveAddress, unsigned char REG_Address)
 {
@@ -269,7 +269,7 @@ unsigned char IIC_Single_Read(unsigned char SlaveAddress, unsigned char REG_Addr
 		IIC_Free();
         return 1;
     }
-    IIC_Send_Byte((u8) REG_Address);   //ÉèÖÃµÍÆğÊ¼µØÖ·
+    IIC_Send_Byte((u8) REG_Address);   //è®¾ç½®ä½èµ·å§‹åœ°å€
     if(IIC_Wait_ACK())
 		return 1;
     IIC_Start();
@@ -284,12 +284,12 @@ unsigned char IIC_Single_Read(unsigned char SlaveAddress, unsigned char REG_Addr
 }
 
  /*
- * º¯ÊıÃû	£ºIIC_Write_2_Byte
- * ÃèÊö		£ºĞ´Á½¸ö×Ö½ÚµÄÊı¾İ£¨Ğè×¢ÒâÊı¾İĞ´ÈëµÈ´ıÊ±¼ä£©
- * ÊäÈë		£ºSlaveAddress	£º´Ó»úµØÖ·
-			  REG_Address	£º´Ó»ú¼Ä´æÆ÷µØÖ·
-			  DataToWrite	£ºĞ´ÈëµÄÊı¾İ
- * Êä³ö		£º0-Õı³£, 1-Òì³£
+ * å‡½æ•°å	ï¼šIIC_Write_2_Byte
+ * æè¿°		ï¼šå†™ä¸¤ä¸ªå­—èŠ‚çš„æ•°æ®ï¼ˆéœ€æ³¨æ„æ•°æ®å†™å…¥ç­‰å¾…æ—¶é—´ï¼‰
+ * è¾“å…¥		ï¼šSlaveAddress	ï¼šä»æœºåœ°å€
+			  REG_Address	ï¼šä»æœºå¯„å­˜å™¨åœ°å€
+			  DataToWrite	ï¼šå†™å…¥çš„æ•°æ®
+ * è¾“å‡º		ï¼š0-æ­£å¸¸, 1-å¼‚å¸¸
  */
 u8 IIC_Write_2_Byte(u8 SlaveAddress, u8 REG_Address, short DataToWrite)
 {
@@ -299,7 +299,7 @@ u8 IIC_Write_2_Byte(u8 SlaveAddress, u8 REG_Address, short DataToWrite)
     if(IIC_Start())
 		return 1;
 	IIC_Start();
-    IIC_Send_Byte(SlaveAddress<<1);				//7Î»´Ó»úµØÖ·+Ò»Î»£¨0-Ğ´, 1-¶Á£©
+    IIC_Send_Byte(SlaveAddress<<1);				//7ä½ä»æœºåœ°å€+ä¸€ä½ï¼ˆ0-å†™, 1-è¯»ï¼‰
 	if(IIC_Wait_ACK())
 		return 1;
     IIC_Send_Byte(REG_Address);
@@ -307,7 +307,7 @@ u8 IIC_Write_2_Byte(u8 SlaveAddress, u8 REG_Address, short DataToWrite)
 		return 1;
     if(IIC_Start())
 		return 1;
-	IIC_Send_Byte(SlaveAddress<<1);				//7Î»´Ó»úµØÖ·+Ò»Î»£¨0-Ğ´, 1-¶Á£©
+	IIC_Send_Byte(SlaveAddress<<1);				//7ä½ä»æœºåœ°å€+ä¸€ä½ï¼ˆ0-å†™, 1-è¯»ï¼‰
 	
     if(IIC_Wait_ACK())
 		return 1;
@@ -315,64 +315,64 @@ u8 IIC_Write_2_Byte(u8 SlaveAddress, u8 REG_Address, short DataToWrite)
 	IIC_Send_Byte(data[0]);
     if(IIC_Wait_ACK())
 		return 1;
-	delay_us(1000000);							//ÕâÀïĞèÒª×¢Òâ£¬ĞèÒªµÈ´ıÒ»¶¨Ê±¼ä£¬±£Ö¤Êı¾İĞ´Èë¼Ä´æÆ÷
+	delay_us(1000000);							//è¿™é‡Œéœ€è¦æ³¨æ„ï¼Œéœ€è¦ç­‰å¾…ä¸€å®šæ—¶é—´ï¼Œä¿è¯æ•°æ®å†™å…¥å¯„å­˜å™¨
 	IIC_Send_Byte(data[1]);
     IIC_NACK();
-	printf("Ğ´ÈëÕı³£\n");
-    IIC_Free();                      		    //ÊÍ·Å×ÜÏß
-	delay_us(1000000);							//ÕâÀïĞèÒª×¢Òâ£¬ĞèÒªµÈ´ıÒ»¶¨Ê±¼ä£¬±£Ö¤Êı¾İĞ´Èë¼Ä´æÆ÷
+	printf("å†™å…¥æ­£å¸¸\n");
+    IIC_Free();                      		    //é‡Šæ”¾æ€»çº¿
+	delay_us(1000000);							//è¿™é‡Œéœ€è¦æ³¨æ„ï¼Œéœ€è¦ç­‰å¾…ä¸€å®šæ—¶é—´ï¼Œä¿è¯æ•°æ®å†™å…¥å¯„å­˜å™¨
 	return 0;	
 }
 
  /*
- * º¯ÊıÃû	£ºIIC_Read
- * ÃèÊö		£º¶ÁÈ¡´Ó»úÒ»¿éÁ¬ĞøµØÖ·ÉÏµÄÊı¾İ
- * ÊäÈë		£ºSlaveAddress	£º´Ó»úµØÖ·
-			  REG_Address	£º´Ó»ú¼Ä´æÆ÷µØÖ·
-			  Length		£º¶ÁÈ¡¶à¸ö×Ö½ÚµÄ×Ü³¤¶È
-			  buf			£º»º³åÊı×é
- * Êä³ö		£º0-Õı³£, 1-Òì³£
+ * å‡½æ•°å	ï¼šIIC_Read
+ * æè¿°		ï¼šè¯»å–ä»æœºä¸€å—è¿ç»­åœ°å€ä¸Šçš„æ•°æ®
+ * è¾“å…¥		ï¼šSlaveAddress	ï¼šä»æœºåœ°å€
+			  REG_Address	ï¼šä»æœºå¯„å­˜å™¨åœ°å€
+			  Length		ï¼šè¯»å–å¤šä¸ªå­—èŠ‚çš„æ€»é•¿åº¦
+			  buf			ï¼šç¼“å†²æ•°ç»„
+ * è¾“å‡º		ï¼š0-æ­£å¸¸, 1-å¼‚å¸¸
  */
 unsigned char IIC_Read(u8 SlaveAddress, u8 REG_Address, u8 Length, u8 *buf)
 {
     u8 i;
-    // ÆğÊ¼ĞÅºÅ
+    // èµ·å§‹ä¿¡å·
     if(IIC_Start())
 		return 1;
 
-    // ·¢ËÍÉè±¸µØÖ·
-    IIC_Send_Byte(SlaveAddress<<1);				//7Î»´Ó»úµØÖ·+Ò»Î»£¨0-Ğ´, 1-¶Á£©
+    // å‘é€è®¾å¤‡åœ°å€
+    IIC_Send_Byte(SlaveAddress<<1);				//7ä½ä»æœºåœ°å€+ä¸€ä½ï¼ˆ0-å†™, 1-è¯»ï¼‰
 
 	if(IIC_Wait_ACK())
 		return 1;
 	
-    //·¢ËÍ´æ´¢µ¥ÔªµØÖ·
+    //å‘é€å­˜å‚¨å•å…ƒåœ°å€
     IIC_Send_Byte(REG_Address);
 	
     if(IIC_Wait_ACK())
 		return 1;
 
-    // ÆğÊ¼ĞÅºÅ
+    // èµ·å§‹ä¿¡å·
     if(IIC_Start())
 		return 1;
 
-    //·¢ËÍÉè±¸µØÖ·+¶ÁĞÅºÅ
-    IIC_Send_Byte((SlaveAddress<<1) + 1);		//7Î»´Ó»úµØÖ·+Ò»Î»£¨0-Ğ´, 1-¶Á£©
+    //å‘é€è®¾å¤‡åœ°å€+è¯»ä¿¡å·
+    IIC_Send_Byte((SlaveAddress<<1) + 1);		//7ä½ä»æœºåœ°å€+ä¸€ä½ï¼ˆ0-å†™, 1-è¯»ï¼‰
 	
     if(IIC_Wait_ACK())
 		return 1;
 	
-    for (i = 0; i < Length; i++)				//Á¬Ğø¶ÁÈ¡Length¸öµØÖ·Êı¾İ£¬´æ´¢ÖĞbuf
+    for (i = 0; i < Length; i++)				//è¿ç»­è¯»å–Lengthä¸ªåœ°å€æ•°æ®ï¼Œå­˜å‚¨ä¸­buf
     {
-        *(buf + i) = IIC_Recive_Byte();			//buf[0]´æ´¢Êı¾İ
+        *(buf + i) = IIC_Recive_Byte();			//buf[0]å­˜å‚¨æ•°æ®
         if (i == Length - 1)		
-			IIC_NACK();							//×îºóÒ»¸öÊı¾İĞèÒª»ØNACK
+			IIC_NACK();							//æœ€åä¸€ä¸ªæ•°æ®éœ€è¦å›NACK
         else		
-			IIC_ACK();							//»ØÓ¦ACK
+			IIC_ACK();							//å›åº”ACK
 		IIC_delay();
 	}
-//	printf("¶ÁÈ¡Õı³£\n");
-    IIC_Free();                      		    //Í£Ö¹ĞÅºÅ
+//	printf("è¯»å–æ­£å¸¸\n");
+    IIC_Free();                      		    //åœæ­¢ä¿¡å·
     IIC_delay();
 	return 0;
 }

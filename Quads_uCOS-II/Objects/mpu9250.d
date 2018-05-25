@@ -51,3 +51,4 @@
 .\objects\mpu9250.o: .\implements\kalman.h
 .\objects\mpu9250.o: .\implements\usart.h
 .\objects\mpu9250.o: .\implements\debug.h
+.\objects\mpu9250.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

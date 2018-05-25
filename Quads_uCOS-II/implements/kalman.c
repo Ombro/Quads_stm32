@@ -1,11 +1,11 @@
-/************************* (C) COPYRIGHT 2017 G627 Team **************************
- * ÎÄ¼şÃû	£ºkalman.c
- * ÃèÊö    	£º¿¨¶ûÂüÂË²¨        
- * ÊµÑéÆ½Ì¨	£ºSTM32F103C8T6
- * ¿â°æ±¾	£ºST3.5.0
- * ×÷Õß		£ººÓÍõ
- * QQ		£º345792307
- * ÍÅ¶Ó		£ºG627
+ï»¿/************************* (C) COPYRIGHT 2017 G627 Team **************************
+ * æ–‡ä»¶å	ï¼škalman.c
+ * æè¿°    	ï¼šå¡å°”æ›¼æ»¤æ³¢        
+ * å®éªŒå¹³å°	ï¼šSTM32F103C8T6
+ * åº“ç‰ˆæœ¬	ï¼šST3.5.0
+ * ä½œè€…		ï¼šæ²³ç‹
+ * QQ		ï¼š345792307
+ * å›¢é˜Ÿ		ï¼šG627
 **********************************************************************************/
 
 #include "kalman.h"
@@ -13,36 +13,36 @@
 extern Kalman kalman;
 
  /*
- * º¯ÊıÃû	£ºset_param
- * ÃèÊö		£ºÉèÖÃ¿¨¶ûÂü²ÎÊıÖµ
- * ÊäÈë		£ºÎŞ
- * Êä³ö		£ºÎŞ
+ * å‡½æ•°å	ï¼šset_param
+ * æè¿°		ï¼šè®¾ç½®å¡å°”æ›¼å‚æ•°å€¼
+ * è¾“å…¥		ï¼šæ— 
+ * è¾“å‡º		ï¼šæ— 
  */
 void set_param(void)
 {
-	kalman.dt = 0.001;				//²ÉÑùÖÜÆÚ
+	kalman.dt = 0.001;				//é‡‡æ ·å‘¨æœŸ
 
-//	xÖá²ÎÊı
-	kalman.x.H[0]=1;				//¹Û²â·½³ÌÖĞµÄH¾ØÕó
+//	xè½´å‚æ•°
+	kalman.x.H[0]=1;				//è§‚æµ‹æ–¹ç¨‹ä¸­çš„HçŸ©é˜µ
 	kalman.x.H[1]=0;
 	
-	kalman.x.A[0][0]=1;				//×´Ì¬×ªÒÆ¾ØÕó
-	kalman.x.A[0][1]=-0.001;		//²ÉÑùÖÜÆÚdt
+	kalman.x.A[0][0]=1;				//çŠ¶æ€è½¬ç§»çŸ©é˜µ
+	kalman.x.A[0][1]=-0.001;		//é‡‡æ ·å‘¨æœŸdt
 	kalman.x.A[1][0]=0;
 	kalman.x.A[1][1]=1;
 	
-	kalman.x.Q[0][0]=0.005;			//ÂË²¨Æ÷Îó²î×ªÒÆµÄÎó²îĞ­·½²î¾ØÕó
+	kalman.x.Q[0][0]=0.005;			//æ»¤æ³¢å™¨è¯¯å·®è½¬ç§»çš„è¯¯å·®åæ–¹å·®çŸ©é˜µ
 	kalman.x.Q[0][1]=0;		
 	kalman.x.Q[1][0]=0;
 	kalman.x.Q[1][1]=0.005;
 	
-	kalman.x.R=0.03;				//¹Û²ì½Ç¶È·½²î
+	kalman.x.R=0.03;				//è§‚å¯Ÿè§’åº¦æ–¹å·®
 	
-	kalman.x.omega_error=0.003;		//½ÇËÙ¶ÈÎó²î
+	kalman.x.omega_error=0.003;		//è§’é€Ÿåº¦è¯¯å·®
 	
 	
 	
-//	yÖá²ÎÊı
+//	yè½´å‚æ•°
 	kalman.y.H[0]=1;
 	kalman.y.H[1]=0;
 	
@@ -61,7 +61,7 @@ void set_param(void)
 	kalman.y.omega_error=0.003;	
 	
 	
-//	zÖá²ÎÊı
+//	zè½´å‚æ•°
 	kalman.z.H[0]=1;
 	kalman.z.H[1]=0;
 	
@@ -84,11 +84,11 @@ void kalman_filter(void)
 {
 	float temp1, temp2, temp3, temp4;
 	
-//	xÖá
-//	µÚÒ»²½£¬¼ÆËãÏÈÑé¹À¼Æ
+//	xè½´
+//	ç¬¬ä¸€æ­¥ï¼Œè®¡ç®—å…ˆéªŒä¼°è®¡
 	kalman.x.estimate_angle += (kalman.x.omega - kalman.x.omega_error) * kalman.dt;
 	
-//	µÚ¶ş²½,¼ÆËãÂË²¨Æ÷Îó²î´«µİµÄĞ­·½²î¾ØÕó
+//	ç¬¬äºŒæ­¥,è®¡ç®—æ»¤æ³¢å™¨è¯¯å·®ä¼ é€’çš„åæ–¹å·®çŸ©é˜µ
 	temp1 = kalman.x.P[0][0];
 	temp2 = kalman.x.P[0][1];
 	temp3 = kalman.x.P[1][0];
@@ -99,16 +99,16 @@ void kalman_filter(void)
 	kalman.x.P[1][0] = temp3 - temp4 * kalman.dt + temp3;
 	kalman.x.P[1][1] = temp4 + kalman.x.Q[1][1];
 	
-//	µÚÈı²½£¬¼ÆËã¿¨¶ûÂüÔöÒæ
+//	ç¬¬ä¸‰æ­¥ï¼Œè®¡ç®—å¡å°”æ›¼å¢ç›Š
 	kalman.x.k_gain[0] = kalman.x.P[0][0] / (kalman.x.P[0][0] + kalman.x.R);
 	kalman.x.k_gain[1] = kalman.x.P[1][0] / (kalman.x.P[1][0] + kalman.x.R);
 
-//	µÚËÄ²½£¬ĞŞÕı¹À¼Æ
+//	ç¬¬å››æ­¥ï¼Œä¿®æ­£ä¼°è®¡
 	kalman.x.optimum_angle = kalman.x.observation_angle + kalman.x.k_gain[0] * (kalman.x.observation_angle - kalman.x.estimate_angle);
 	kalman.x.omega_error = kalman.x.omega_error + kalman.x.k_gain[1] * (kalman.x.observation_angle - kalman.x.estimate_angle);
 	kalman.x.optimum_omega = kalman.x.omega - kalman.x.omega_error;
 	
-//	µÚÎå²½£¬¸üĞÂÎó²îĞ­·½²î
+//	ç¬¬äº”æ­¥ï¼Œæ›´æ–°è¯¯å·®åæ–¹å·®
 	temp1 = kalman.x.P[0][0];
 	temp2 = kalman.x.P[0][1];
 	temp3 = kalman.x.P[1][0];
@@ -120,7 +120,7 @@ void kalman_filter(void)
 	kalman.x.P[1][1] -= kalman.x.k_gain[1] * temp2;
 	
 	
-//	yÖá
+//	yè½´
 	kalman.y.estimate_angle += (kalman.y.omega - kalman.y.omega_error) * kalman.dt;
 	
 	temp1 = kalman.y.P[0][0];
@@ -151,7 +151,7 @@ void kalman_filter(void)
 	kalman.y.P[1][1] -= kalman.y.k_gain[1] * temp2;
 	
 	
-//	zÖá
+//	zè½´
 	kalman.z.estimate_angle += (kalman.z.omega - kalman.z.omega_error) * kalman.dt;
 	
 	temp1 = kalman.z.P[0][0];
