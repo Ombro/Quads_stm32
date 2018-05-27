@@ -1,11 +1,11 @@
-ï»¿/************************* (C) COPYRIGHT 2017 G627 Team **************************
- * æ–‡ä»¶å	ï¼šapp.c
- * æè¿°    	ï¼šç”¨æˆ·ç›¸å…³ç¨‹åºï¼Œå³ä»»åŠ¡   
- * å®éªŒå¹³å°	ï¼šSTM32F103C8T6
- * åº“ç‰ˆæœ¬	ï¼šST3.5.0
- * ä½œè€…		ï¼šæ²³ç‹
- * QQ		ï¼š345792307
- * å›¢é˜Ÿ		ï¼šG627
+/************************* (C) COPYRIGHT 2017 G627 Team **************************
+ * ÎÄ¼şÃû	£ºapp.c
+ * ÃèÊö    	£ºÓÃ»§Ïà¹Ø³ÌĞò£¬¼´ÈÎÎñ   
+ * ÊµÑéÆ½Ì¨	£ºSTM32F103C8T6
+ * ¿â°æ±¾	£ºST3.5.0
+ * ×÷Õß		£ººÓÍõ
+ * QQ		£º345792307
+ * ÍÅ¶Ó		£ºG627
 **********************************************************************************/
 
 #include "includes.h"
@@ -16,18 +16,36 @@ float Motion_9[9]={0};
 float pressure;
 float temp;
 int i=0;
+float text_data = 1.23456;
 
-
-extern char USART_TxBuffer[USART_TxBuffer_Size];			//æ¥æ”¶æ•°æ®æ•°ç»„
-extern char USART_RxBuffer[USART_RxBuffer_Size];			//å‘é€æ•°æ®æ•°ç»„
+extern char USART_TxBuffer[USART_TxBuffer_Size];			//·¢ËÍÊı¾İÊı×é
+extern char USART_RxBuffer[USART_RxBuffer_Size];			//½ÓÊÕÊı¾İÊı×é
 
 
 void Task_LED1(void *p_arg)
 {
     (void)p_arg;
+	strcpy(USART_RxBuffer, "@X5.55,4.44,3.33,2.22,1.11");
+	strcpy(USART_TxBuffer, "@Y1.11,2.22,3.33,4.44,5.55");
 //	USART_RxBuffer[0]='A';
     while(1)
     {
+//falshĞ´²âÊÔ		
+//		analyze_data(USART_RxBuffer);
+//		save_pidparm();
+//		analyze_data(USART_TxBuffer);
+//		save_pidparm();
+
+//flash¶Á²âÊÔ
+//		get_pidparm();
+//		for(i = 0;i<5;i++)
+//		{
+//			printf("%lf\t",pid_parm.y[i]);
+//			OSTimeDlyHMSM(0,0,0,10);
+//			printf("%lf\n",pid_parm.x[i]);
+//			OSTimeDlyHMSM(0,0,0,10);
+//		}
+
 		
 //		Battery_Read();
 //		while(USART_RxBuffer[0]!='\0');
@@ -56,10 +74,10 @@ void Task_LED2(void *p_arg)
     while(1)
     {
 		GPIO_ResetBits(GPIOC, GPIO_Pin_13);
-		printf("ç¯äº®äº†\n");
+		printf("µÆÁÁÁË\n");
         OSTimeDlyHMSM(0,0,0,500);
         GPIO_SetBits(GPIOC, GPIO_Pin_13);
-		printf("ç¯ç­äº†\n");
+		printf("µÆÃğÁË\n");
         OSTimeDlyHMSM(0,0,0,500);
     }
 }

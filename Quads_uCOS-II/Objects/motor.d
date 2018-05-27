@@ -3,6 +3,7 @@
 .\objects\motor.o: .\USER\includes.h
 .\objects\motor.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\motor.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\String.h
+.\objects\motor.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\Math.h
 .\objects\motor.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\rt_misc.h
 .\objects\motor.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\motor.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -50,4 +51,3 @@
 .\objects\motor.o: .\implements\kalman.h
 .\objects\motor.o: .\implements\usart.h
 .\objects\motor.o: .\implements\debug.h
-.\objects\motor.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

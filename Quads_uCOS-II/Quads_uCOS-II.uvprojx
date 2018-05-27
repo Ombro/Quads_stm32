@@ -544,6 +544,16 @@
               <FileType>5</FileType>
               <FilePath>.\implements\usart.h</FilePath>
             </File>
+            <File>
+              <FileName>pid.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\implements\pid.h</FilePath>
+            </File>
+            <File>
+              <FileName>pid.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\implements\pid.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

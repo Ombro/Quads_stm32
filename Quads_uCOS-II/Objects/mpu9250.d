@@ -4,6 +4,7 @@
 .\objects\mpu9250.o: .\USER\includes.h
 .\objects\mpu9250.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\mpu9250.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\String.h
+.\objects\mpu9250.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\Math.h
 .\objects\mpu9250.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\rt_misc.h
 .\objects\mpu9250.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\mpu9250.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -51,4 +52,3 @@
 .\objects\mpu9250.o: .\implements\kalman.h
 .\objects\mpu9250.o: .\implements\usart.h
 .\objects\mpu9250.o: .\implements\debug.h
-.\objects\mpu9250.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

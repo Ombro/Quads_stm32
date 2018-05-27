@@ -2,6 +2,7 @@
 .\objects\bsp.o: .\USER\includes.h
 .\objects\bsp.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\bsp.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\String.h
+.\objects\bsp.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\Math.h
 .\objects\bsp.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\rt_misc.h
 .\objects\bsp.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\bsp.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -49,4 +50,3 @@
 .\objects\bsp.o: .\implements\kalman.h
 .\objects\bsp.o: .\implements\usart.h
 .\objects\bsp.o: .\implements\debug.h
-.\objects\bsp.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

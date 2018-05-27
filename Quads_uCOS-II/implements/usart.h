@@ -1,11 +1,11 @@
-ï»¿/************************* (C) COPYRIGHT 2017 G627 Team **************************
- * æ–‡ä»¶å	ï¼š
- * æè¿°    	ï¼š        
- * å®éªŒå¹³å°	ï¼šSTM32F103C8T6
- * åº“ç‰ˆæœ¬	ï¼šST3.5.0
- * ä½œè€…		ï¼šæ²³ç‹
- * QQ		ï¼š345792307
- * å›¢é˜Ÿ		ï¼šG627
+/************************* (C) COPYRIGHT 2017 G627 Team **************************
+ * ÎÄ¼şÃû	£º
+ * ÃèÊö    	£º        
+ * ÊµÑéÆ½Ì¨	£ºSTM32F103C8T6
+ * ¿â°æ±¾	£ºST3.5.0
+ * ×÷Õß		£ººÓÍõ
+ * QQ		£º345792307
+ * ÍÅ¶Ó		£ºG627
 **********************************************************************************/
 
 
@@ -14,7 +14,7 @@
 
 #include "includes.h"
 
-//ç§»æ¤éœ€æ³¨æ„åœ°å€
+//ÒÆÖ²Ğè×¢ÒâµØÖ·
 #define USART1_TDR_ADDRESS					0x40013808
 #define USART1_RDR_ADDRESS					0x40013804
 
@@ -22,13 +22,13 @@
 #define USART_TxBuffer_Size					80
 #define USART_RxBuffer_Size					80
 
-#define countof(a)   (sizeof(a) / sizeof(*(a)))						//è®¡ç®—æ•°ç»„å¤§å°
+#define countof(a)   (sizeof(a) / sizeof(*(a)))						//¼ÆËãÊı×é´óĞ¡
 
 
 
 int SendChar(int ch);
 //int GetKey(void);
-void usart_Init(u32 BaudRate);			//åˆå§‹åŒ–ä¸²å£
+void usart_Init(u32 BaudRate);			//³õÊ¼»¯´®¿Ú
 void USART_DMA(void);
 
 

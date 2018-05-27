@@ -1,4 +1,4 @@
-Ôªø/*
+/*
 *********************************************************************************************************
 *                                                uC/OS-II
 *                                          The Real-Time Kernel
@@ -15,7 +15,7 @@
 * LICENSING TERMS:
 * ---------------
 *   uC/OS-II is provided in source form for FREE evaluation, for educational use or for peaceful research.
-* If you plan on using  uC/OS-II  in a commercial product you need to contact MicriÁ•Ñ to properly license
+* If you plan on using  uC/OS-II  in a commercial product you need to contact Micriµm to properly license
 * its use in your product. We provide ALL the source code for your convenience and to help you experience
 * uC/OS-II.   The fact that the  source is provided does  NOT  mean that you can use it without  paying a
 * licensing fee.
@@ -70,7 +70,7 @@
 #define OS_TASK_SW_HOOK_EN        1    /*     Include code for OSTaskSwHook()                          */
 
 
-                                       /* ------------------------- ‰ø°Âè∑ÈáèÈõÜ ------------------------- */
+                                       /* ------------------------- –≈∫≈¡øºØ ------------------------- */
                                        /* ----------------------- EVENT FLAGS ------------------------ */
 #define OS_FLAG_EN                0    /* Enable (1) or Disable (0) code generation for EVENT FLAGS    */
 #define OS_FLAG_ACCEPT_EN         1    /*     Include code for OSFlagAccept()                          */
@@ -81,7 +81,7 @@
 #define OS_FLAG_WAIT_CLR_EN       1    /*     Include code for Wait on Clear EVENT FLAGS               */
 
 
-                                       /* -------------------------- ÈÇÆÁÆ± ---------------------------- */
+                                       /* -------------------------- ” œ‰ ---------------------------- */
                                        /* -------------------- MESSAGE MAILBOXES --------------------- */
 #define OS_MBOX_EN                0    /* Enable (1) or Disable (0) code generation for MAILBOXES      */
 #define OS_MBOX_ACCEPT_EN         1    /*     Include code for OSMboxAccept()                          */
@@ -92,14 +92,14 @@
 #define OS_MBOX_QUERY_EN          1    /*     Include code for OSMboxQuery()                           */
 
 
-                                       /* -------------------------- ÂÜÖÂ≠òÁÆ°ÁêÜ ------------------------ */
+                                       /* -------------------------- ƒ⁄¥Êπ‹¿Ì ------------------------ */
                                        /* --------------------- MEMORY MANAGEMENT -------------------- */
 #define OS_MEM_EN                 0    /* Enable (1) or Disable (0) code generation for MEMORY MANAGER */
 #define OS_MEM_NAME_SIZE         16    /*     Determine the size of a memory partition name            */
 #define OS_MEM_QUERY_EN           1    /*     Include code for OSMemQuery()                            */
 
 
-                                       /* ------------------------- ‰∫íÊñ•‰ø°Âè∑Èáè ----------------------- */
+                                       /* ------------------------- ª•≥‚–≈∫≈¡ø ----------------------- */
                                        /* ---------------- MUTUAL EXCLUSION SEMAPHORES --------------- */
 #define OS_MUTEX_EN               0    /* Enable (1) or Disable (0) code generation for MUTEX          */
 #define OS_MUTEX_ACCEPT_EN        1    /*     Include code for OSMutexAccept()                         */
@@ -107,7 +107,7 @@
 #define OS_MUTEX_QUERY_EN         1    /*     Include code for OSMutexQuery()                          */
 
 
-                                       /* --------------------------- ÈòüÂàó --------------------------- */
+                                       /* --------------------------- ∂”¡– --------------------------- */
                                        /* ---------------------- MESSAGE QUEUES ---------------------- */
 #define OS_Q_EN                   0    /* Enable (1) or Disable (0) code generation for QUEUES         */
 #define OS_Q_ACCEPT_EN            1    /*     Include code for OSQAccept()                             */
@@ -120,7 +120,7 @@
 #define OS_Q_QUERY_EN             1    /*     Include code for OSQQuery()                              */
 
 
-                                       /* -------------------------- ‰ø°Âè∑Èáè -------------------------- */
+                                       /* -------------------------- –≈∫≈¡ø -------------------------- */
                                        /* ------------------------ SEMAPHORES ------------------------ */
 #define OS_SEM_EN                 0    /* Enable (1) or Disable (0) code generation for SEMAPHORES     */
 #define OS_SEM_ACCEPT_EN          1    /*    Include code for OSSemAccept()                            */
@@ -130,7 +130,7 @@
 #define OS_SEM_SET_EN             1    /*    Include code for OSSemSet()                               */
 
 
-                                       /* -------------------------- ÂÆöÊó∂Âô® -------------------------- */
+                                       /* -------------------------- ∂® ±∆˜ -------------------------- */
                                        /* --------------------- TIME MANAGEMENT ---------------------- */
 #define OS_TIME_DLY_HMSM_EN       1    /*     Include code for OSTimeDlyHMSM()                         */
 #define OS_TIME_DLY_RESUME_EN     1    /*     Include code for OSTimeDlyResume()                       */
@@ -138,7 +138,7 @@
 #define OS_TIME_TICK_HOOK_EN      1    /*     Include code for OSTimeTickHook()                        */
 
 
-                                       /* -------------------------- ÂÆöÊó∂Âô® -------------------------- */
+                                       /* -------------------------- ∂® ±∆˜ -------------------------- */
                                        /* --------------------- TIMER MANAGEMENT --------------------- */
 #define OS_TMR_EN                 0    /* Enable (1) or Disable (0) code generation for TIMERS         */
 #define OS_TMR_CFG_MAX           16    /*     Maximum number of timers                                 */

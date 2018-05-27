@@ -1,16 +1,25 @@
 /************************* (C) COPYRIGHT 2017 G627 Team **************************
- * æ–‡ä»¶å	ï¼š
- * æè¿°    	ï¼š        
- * å®éªŒå¹³å°	ï¼šSTM32F103C8T6
- * åº“ç‰ˆæœ¬	ï¼šST3.5.0
- * ä½œè€…		ï¼šæ²³ç‹
- * QQ		ï¼š345792307
- * å›¢é˜Ÿ		ï¼šG627
+ * ÎÄ¼şÃû	£ºdebug.c
+ * ÃèÊö    	£ºpidµ÷ÊÔ
+ * ÊµÑéÆ½Ì¨	£ºSTM32F103C8T6
+ * ¿â°æ±¾	£ºST3.5.0
+ * ×÷Õß		£ººÓÍõ
+ * QQ		£º345792307
+ * ÍÅ¶Ó		£ºG627
 **********************************************************************************/
 
 #include "debug.h"
 
+volatile FLASH_Status FLASHStatus = FLASH_COMPLETE;
 
+
+ /*
+ * º¯ÊıÃû	£ºRestart_USART_DMA
+ * ÃèÊö		£ºÓÉÓÚÑ¡ÔñDMAÕı³£Ä£Ê½£¬Ã¿´Î´«ÊäÍêĞèÒªÖØĞÂ¿ªÆô´®¿ÚDMA£¬ÖØ
+			  ĞÂÉèÖÃµØÖ·£¬Ê¹½ÓÊÕµÄÊı×éµØÖ·²»×ÔÔö£¬´ïµ½circleÄ£Ê½Ğ§¹û
+ * ÊäÈë		£ºÎŞ
+ * Êä³ö		£ºÎŞ
+ */
 void Restart_USART_DMA(void)
 {
 	DMA_Cmd(DMA1_Channel5,DISABLE);
@@ -24,114 +33,139 @@ void Restart_USART_DMA(void)
 	DMA_Cmd(DMA1_Channel5,ENABLE); 
 }
 
-
+ /*
+ * º¯ÊıÃû	£ºDebug_Init
+ * ÃèÊö		£º´®¿Úµ÷ÊÔ³õÊ¼»¯£¬DMAºÍ´®¿ÚÅäÖÃ³õÊ¼»¯
+ * ÊäÈë		£ºÎŞ
+ * Êä³ö		£ºÎŞ
+ */
 void Debug_Init(void)
 {
 	usart_Init(115200);
 	USART_DMA();
 }
 
-
+ /*
+ * º¯ÊıÃû	£ºset_pid
+ * ÃèÊö		£º½âÎö´®¿Ú½ÓÊÕµÄ×Ö·û´®£¬ÉèÖÃpid²ÎÊı
+ * ÊäÈë		£ºarr[]	£ºpid²ÎÊıÊı×é
+			  p		£º´®¿Ú½ÓÊÕ×Ö·û´®Êı×éÊ×µØÖ·
+ * Êä³ö		£ºÎŞ
+ */
 void set_pid(float arr[], char *p)
 {
-	int i = 0, j=0;
-	float temp;	
-	for(j=0;j<5;j++)
+	int i = 0, j = 0;
+	float temp = 0;
+	for (j = 0; j<5; j++)
 	{
-		while((*p>29)&&(*p<40))
+		i = 0;
+		while ((*p>47) && (*p<58))
 		{
-			temp += (*p - 30) * pow(10,i);
+			temp += (*p - 48) * (float)pow(10, i);
 			p++;
 			i++;
 		}
-		if(*p == '.')
+		if (*p == '.')
 		{
+			i = 1;
 			p++;
-			i=0;
-			while((*p>29)&&(*p<40))
+			while ((*p>47) && (*p<58))
 			{
-				temp+=(*p - 30) * pow(10,-i);
+				temp += (*p - 48) * (float)pow(10, -i);
 				p++;
+				i++;
 			}
 		}
-		if((*p == ',')||(*p == '#'))
+		if ((*p == ',') || (*p == '#'))
 		{
 			p++;
 		}
-		arr[j]=temp;
-		temp=0;
+		arr[j] = temp;
+		temp = 0;
 	}
 }
 
+ /*
+ * º¯ÊıÃû	£ºsave_pidparm
+ * ÃèÊö		£º±£´æpid²ÎÊıµ½ÄÚ²¿ÉÏflash£¬ÆğÊ¼µØÖ·Îª0x8010000£¬
+			  float->int(x100)£¬Ã¿¸ö²ÎÊı4¸ö×Ö½Ú
+ * ÊäÈë		£ºÎŞ
+ * Êä³ö		£ºÎŞ
+ */
 void save_pidparm(void)
 {
-	char *temp;
-	int i=0,j=0;
-	char *x = (char *)FLASH_START_ADDR_X;
-	char *y = (char *)FLASH_START_ADDR_Y;
-	for(i=0;i<5;i++)
+	int i = 0;
+	int data_save[10];
+	for(i = 0;i<5;i++)
+		data_save[i] = (int)(pid_parm.x[i]*100);
+	for(i = 5;i<10;i++)
+		data_save[i] = (int)(pid_parm.y[i-5]*100);
+	FLASH_Unlock();			//Ğè½â³ıËø¶¨£¬flash¶ÁĞ´±£»¤
+	FLASH_ReadOutProtection(DISABLE);		//Flash¶Á±£»¤½ûÖ¹  
+	FLASH_ClearFlag(FLASH_FLAG_BSY | FLASH_FLAG_EOP | FLASH_FLAG_PGERR | FLASH_FLAG_WRPRTERR);//Çå³ı±êÖ¾Î»
+	FLASHStatus = FLASH_ErasePage(FLASH_START_ADDR_X);//²Á³ıÊı¾İ
+	if(FLASHStatus == FLASH_COMPLETE)
 	{
-		temp = (char *)(&pid.x[i]);
-		for(j=0;j<4;j++)
-		{
-			*x = *temp;
-			temp++;
-			x++;
-		}
+		for(i=0;i<10;i++)
+			FLASH_ProgramWord(FLASH_START_ADDR_X+i*4, data_save[i]);
 	}
-	for(i=0;i<5;i++)
-	{
-		temp = (char *)(&pid.y[i]);
-		for(j=0;j<4;j++)
-		{
-			*y = *temp;
-			temp++;
-			y++;
-		}
-	}
+	 FLASH_Lock();		//Ëø¶¨²¢±£´æĞ´ÈëµÄÊı¾İ
 }
 
+ /*
+ * º¯ÊıÃû	£ºget_pidparm
+ * ÃèÊö		£º´ÓfalshÖĞ¶Á³öpid²ÎÊı²¢×ª»»³Éfloat
+ * ÊäÈë		£ºÎŞ
+ * Êä³ö		£ºÎŞ
+ */
 void get_pidparm(void)
 {
-	int i=0,j=0;
-	char temp[4];
-	float *data;
-	char *x = (char *)FLASH_START_ADDR_X;
-	char *y = (char *)FLASH_START_ADDR_Y;
-	for(i=0;i<5;i++)
+	int i=0;
+	uint32_t *p = (uint32_t *)FLASH_START_ADDR_X;
+	for(i=0;i<10;i++)
 	{
-		for(j=0;j<4;j++)
+		if(i<5)
 		{
-			temp[j] = *x;
-			x++;
+			pid_parm.x[i]=((float)(*p))/100;
+				p++;
 		}
-		data = (float*)(&temp);
-		pid.x[i] = *data;
-	}
-	for(i=0;i<5;i++)
-	{
-		for(j=0;j<4;j++)
+		else
 		{
-			temp[j] = *y;
-			y++;
+			pid_parm.y[i-5]=((float)(*p))/100;
+			if(i!=9)
+				p++;
 		}
-		data = (float*)(&temp);
-		pid.y[i] = *data;
 	}
 }
 
+ /*
+ * º¯ÊıÃû	£ºclr_pidparm
+ * ÃèÊö		£º½«flashÉÏµÄpid²ÎÊıÇåÁã
+ * ÊäÈë		£ºÎŞ
+ * Êä³ö		£ºÎŞ
+ */
 void clr_pidparm(void)
 {
-	char *p = (char *)FLASH_START_ADDR_X;
-	int size;
-	for(size = 0;size<20;size++)
+	int i=0;
+	FLASH_Unlock();
+	FLASH_ReadOutProtection(DISABLE);   
+	FLASH_ClearFlag(FLASH_FLAG_BSY | FLASH_FLAG_EOP | FLASH_FLAG_PGERR | FLASH_FLAG_WRPRTERR);
+	FLASHStatus = FLASH_ErasePage(FLASH_START_ADDR_X);
+	if(FLASHStatus == FLASH_COMPLETE)
 	{
-		*p = 0;
-		p++;
+		for(i=0;i<10;i++)
+			FLASH_ProgramWord(FLASH_START_ADDR_X+i*4, 0);
 	}
+	FLASH_Lock(); 
 }
 
-void recieve_data(char *buff)
+ /*
+ * º¯ÊıÃû	£ºrecieve_data
+ * ÃèÊö		£º½âÎöÊı¾İ°ü£¬²¢Ö´ĞĞÏàÓ¦²Ù×÷
+ * ÊäÈë		£ºÎŞ
+ * Êä³ö		£ºÎŞ
+ */
+void analyze_data(char *buff)
 {
 	if(*buff == '@')
 	{
@@ -139,10 +173,12 @@ void recieve_data(char *buff)
 		switch(*buff)
 		{
 			case 'X':
-				set_pid(pid.x, buff);
+				buff++;
+				set_pid(pid_parm.x, buff);
 				break;
 			case 'Y':
-				set_pid(pid.y, buff);
+				buff++;
+				set_pid(pid_parm.y, buff);
 				break;
 			case '*':
 				save_pidparm();

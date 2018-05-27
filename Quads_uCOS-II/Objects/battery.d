@@ -35,6 +35,7 @@
 .\objects\battery.o: .\implements\delay.h
 .\objects\battery.o: .\USER\includes.h
 .\objects\battery.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\String.h
+.\objects\battery.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\Math.h
 .\objects\battery.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\rt_misc.h
 .\objects\battery.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\battery.o: .\uCOS_Sources\ucos_ii.h
@@ -51,4 +52,3 @@
 .\objects\battery.o: .\implements\kalman.h
 .\objects\battery.o: .\implements\usart.h
 .\objects\battery.o: .\implements\debug.h
-.\objects\battery.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

@@ -32,6 +32,7 @@
 .\objects\stm32f10x_it.o: USER\includes.h
 .\objects\stm32f10x_it.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\stm32f10x_it.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\String.h
+.\objects\stm32f10x_it.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\Math.h
 .\objects\stm32f10x_it.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\rt_misc.h
 .\objects\stm32f10x_it.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\stm32f10x_it.o: .\uCOS_Sources\ucos_ii.h
@@ -50,4 +51,3 @@
 .\objects\stm32f10x_it.o: .\implements\kalman.h
 .\objects\stm32f10x_it.o: .\implements\usart.h
 .\objects\stm32f10x_it.o: .\implements\debug.h
-.\objects\stm32f10x_it.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

@@ -1,11 +1,11 @@
-ï»¿/************************* (C) COPYRIGHT 2017 G627 Team **************************
- * æ–‡ä»¶å	ï¼š
- * æè¿°    	ï¼š        
- * å®éªŒå¹³å°	ï¼šSTM32F103C8T6
- * åº“ç‰ˆæœ¬	ï¼šST3.5.0
- * ä½œè€…		ï¼šæ²³ç‹
- * QQ		ï¼š345792307
- * å›¢é˜Ÿ		ï¼šG627
+/************************* (C) COPYRIGHT 2017 G627 Team **************************
+ * ÎÄ¼şÃû	£º
+ * ÃèÊö    	£º        
+ * ÊµÑéÆ½Ì¨	£ºSTM32F103C8T6
+ * ¿â°æ±¾	£ºST3.5.0
+ * ×÷Õß		£ººÓÍõ
+ * QQ		£º345792307
+ * ÍÅ¶Ó		£ºG627
 **********************************************************************************/
 
 #ifndef __IIC_H__
@@ -13,44 +13,44 @@
 
 #include "includes.h"
 
-#define 	SCL_PIN			GPIO_Pin_4									//å®šä¹‰SCLå¼•è„š
-#define 	SDA_PIN 		GPIO_Pin_5									//å®šä¹‰SDAå¼•è„š				
-#define 	GPIO_IIC		GPIOA										//å®šä¹‰IICå¼•è„šç»„
-#define 	RCC_GPIO_IIC	RCC_APB2Periph_GPIOA						//å®šä¹‰æ—¶é’Ÿ
+#define 	SCL_PIN			GPIO_Pin_4									//¶¨ÒåSCLÒı½Å
+#define 	SDA_PIN 		GPIO_Pin_5									//¶¨ÒåSDAÒı½Å				
+#define 	GPIO_IIC		GPIOA										//¶¨ÒåIICÒı½Å×é
+#define 	RCC_GPIO_IIC	RCC_APB2Periph_GPIOA						//¶¨ÒåÊ±ÖÓ
 
 
-#define 	SCL_H()			GPIO_SetBits(GPIO_IIC , SCL_PIN)			//æ‹‰é«˜SCL
-#define 	SCL_L()			GPIO_ResetBits(GPIO_IIC , SCL_PIN)			//æ‹‰ä½SCL
+#define 	SCL_H()			GPIO_SetBits(GPIO_IIC , SCL_PIN)			//À­¸ßSCL
+#define 	SCL_L()			GPIO_ResetBits(GPIO_IIC , SCL_PIN)			//À­µÍSCL
 
-#define 	SDA_H()			GPIO_SetBits(GPIO_IIC , SDA_PIN)			//æ‹‰é«˜SDA
-#define 	SDA_L()			GPIO_ResetBits(GPIO_IIC , SDA_PIN)			//æ‹‰ä½SDA
+#define 	SDA_H()			GPIO_SetBits(GPIO_IIC , SDA_PIN)			//À­¸ßSDA
+#define 	SDA_L()			GPIO_ResetBits(GPIO_IIC , SDA_PIN)			//À­µÍSDA
 
-#define		SCL_read()		GPIO_ReadInputDataBit(GPIO_IIC , SCL_PIN)	//è¯»å–SCLå¼•è„šç”µå¹³
-#define 	SDA_read()		GPIO_ReadInputDataBit(GPIO_IIC , SDA_PIN)	//è¯»å–SDAå¼•è„šç”µå¹³
+#define		SCL_read()		GPIO_ReadInputDataBit(GPIO_IIC , SCL_PIN)	//¶ÁÈ¡SCLÒı½ÅµçÆ½
+#define 	SDA_read()		GPIO_ReadInputDataBit(GPIO_IIC , SDA_PIN)	//¶ÁÈ¡SDAÒı½ÅµçÆ½
 
 
-//#define		IIC_delay() 	__NOP()										//IICå»¶è¿Ÿ
+//#define		IIC_delay() 	__NOP()										//IICÑÓ³Ù
 
 
 
 void IIC_delay(void);
-void IIC_Init(void);													//é…ç½®IICå¼•è„š
-u8 IIC_Start(void);														//æ‰“å¼€IICæ€»çº¿
-void IIC_Free(void);													//ç»“æŸé€šè®¯ï¼Œé‡Šæ”¾IICæ€»çº¿
-void IIC_ACK(void);														//å…è®¸ä»æœºåº”ç­”
-void IIC_NACK(void);													//ä¸å…è®¸ä»æœºåº”ç­”ï¼Œå³é‡Šæ”¾IICæ€»çº¿
-u8 IIC_Wait_ACK(void);													//åˆ¤æ–­ä»æœºæ˜¯å¦è¿”å›ACKä¿¡å·ã€‚è¿”å›ä¸º: 1-æœ‰ACKï¼Œ 0-æ— ACK
-void IIC_Send_Byte(unsigned char SendByte);								//å‘é€ä¸€ä¸ªå­—èŠ‚ï¼ˆ8Bitï¼‰çš„æ•°æ®SendByteï¼Œä»é«˜ä½åˆ°ä½ä½
-unsigned char IIC_Recive_Byte(void);									//è¿”å›ä»æœºä¼ è¾“çš„æ•°æ®
-unsigned char IIC_Single_Write(	unsigned char SlaveAddress,				//å‘é€è®¾å¤‡åœ°å€+å†™ä¿¡å·
+void IIC_Init(void);													//ÅäÖÃIICÒı½Å
+u8 IIC_Start(void);														//´ò¿ªIIC×ÜÏß
+void IIC_Free(void);													//½áÊøÍ¨Ñ¶£¬ÊÍ·ÅIIC×ÜÏß
+void IIC_ACK(void);														//ÔÊĞí´Ó»úÓ¦´ğ
+void IIC_NACK(void);													//²»ÔÊĞí´Ó»úÓ¦´ğ£¬¼´ÊÍ·ÅIIC×ÜÏß
+u8 IIC_Wait_ACK(void);													//ÅĞ¶Ï´Ó»úÊÇ·ñ·µ»ØACKĞÅºÅ¡£·µ»ØÎª: 1-ÓĞACK£¬ 0-ÎŞACK
+void IIC_Send_Byte(unsigned char SendByte);								//·¢ËÍÒ»¸ö×Ö½Ú£¨8Bit£©µÄÊı¾İSendByte£¬´Ó¸ßÎ»µ½µÍÎ»
+unsigned char IIC_Recive_Byte(void);									//·µ»Ø´Ó»ú´«ÊäµÄÊı¾İ
+unsigned char IIC_Single_Write(	unsigned char SlaveAddress,				//·¢ËÍÉè±¸µØÖ·+Ğ´ĞÅºÅ
 								unsigned char REG_Address,
 								unsigned char REG_data	);				
-unsigned char IIC_Single_Read(	unsigned char SlaveAddress, 			//å‘é€è®¾å¤‡åœ°å€+è¯»ä¿¡å·
+unsigned char IIC_Single_Read(	unsigned char SlaveAddress, 			//·¢ËÍÉè±¸µØÖ·+¶ÁĞÅºÅ
 								unsigned char REG_Address	);				
-unsigned char IIC_Read(	u8 SlaveAddress, 								//è¯»å–ä»æœºä¸€å—è¿ç»­åœ°å€ä¸Šçš„æ•°æ®
+unsigned char IIC_Read(	u8 SlaveAddress, 								//¶ÁÈ¡´Ó»úÒ»¿éÁ¬ĞøµØÖ·ÉÏµÄÊı¾İ
 						u8 REG_Address, 
 						u8 Length, u8 *buf);				
-unsigned char IIC_Write_2_Byte(	u8 SlaveAddress, 						//å‘ä»æœºä¸€ä¸ªåœ°å€å†™å…¥ä¸¤ä¸ªå­—èŠ‚çš„æ•°æ®
+unsigned char IIC_Write_2_Byte(	u8 SlaveAddress, 						//Ïò´Ó»úÒ»¸öµØÖ·Ğ´ÈëÁ½¸ö×Ö½ÚµÄÊı¾İ
 								u8 REG_Address, 
 								short DataToWrite);
 						  

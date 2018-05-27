@@ -33,6 +33,7 @@
 .\objects\iic.o: .\USER\includes.h
 .\objects\iic.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\iic.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\String.h
+.\objects\iic.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\Math.h
 .\objects\iic.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\rt_misc.h
 .\objects\iic.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\iic.o: .\uCOS_Sources\ucos_ii.h
@@ -51,4 +52,3 @@
 .\objects\iic.o: .\implements\kalman.h
 .\objects\iic.o: .\implements\usart.h
 .\objects\iic.o: .\implements\debug.h
-.\objects\iic.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

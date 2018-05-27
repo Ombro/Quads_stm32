@@ -3,6 +3,7 @@
 .\objects\delay.o: .\USER\includes.h
 .\objects\delay.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\delay.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\String.h
+.\objects\delay.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\Math.h
 .\objects\delay.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\rt_misc.h
 .\objects\delay.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\delay.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -50,4 +51,3 @@
 .\objects\delay.o: .\implements\kalman.h
 .\objects\delay.o: .\implements\usart.h
 .\objects\delay.o: .\implements\debug.h
-.\objects\delay.o: E:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
