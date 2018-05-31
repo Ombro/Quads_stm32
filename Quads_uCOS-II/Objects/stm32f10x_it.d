@@ -51,3 +51,5 @@
 .\objects\stm32f10x_it.o: .\implements\kalman.h
 .\objects\stm32f10x_it.o: .\implements\usart.h
 .\objects\stm32f10x_it.o: .\implements\debug.h
+.\objects\stm32f10x_it.o: .\implements\ctrl.h
+.\objects\stm32f10x_it.o: .\implements\timer.h

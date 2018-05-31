@@ -52,3 +52,5 @@
 .\objects\mpu9250.o: .\implements\kalman.h
 .\objects\mpu9250.o: .\implements\usart.h
 .\objects\mpu9250.o: .\implements\debug.h
+.\objects\mpu9250.o: .\implements\ctrl.h
+.\objects\mpu9250.o: .\implements\timer.h

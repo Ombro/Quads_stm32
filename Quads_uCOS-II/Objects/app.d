@@ -50,3 +50,5 @@
 .\objects\app.o: .\implements\kalman.h
 .\objects\app.o: .\implements\usart.h
 .\objects\app.o: .\implements\debug.h
+.\objects\app.o: .\implements\ctrl.h
+.\objects\app.o: .\implements\timer.h

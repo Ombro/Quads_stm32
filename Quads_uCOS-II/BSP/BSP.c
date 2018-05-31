@@ -36,6 +36,7 @@ void BSP_Init(void)
 //	IIC_Init();
 	Debug_Init();
 //	Motor_Init();
+	Timer_Init();
 }
 
 /*

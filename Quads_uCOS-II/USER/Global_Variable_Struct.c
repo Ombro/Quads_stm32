@@ -29,4 +29,9 @@ PID_PARM pid_parm;
 
 //PID变量
 PID pid;
+
+//移动数据
+MOVE move;
+
+unsigned int counter = 0;
 /************************* (C) COPYRIGHT 2017 G627 Team **************************/

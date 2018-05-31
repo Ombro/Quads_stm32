@@ -545,14 +545,24 @@
               <FilePath>.\implements\usart.h</FilePath>
             </File>
             <File>
-              <FileName>pid.h</FileName>
+              <FileName>ctrl.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\implements\pid.h</FilePath>
+              <FilePath>.\implements\ctrl.h</FilePath>
             </File>
             <File>
-              <FileName>pid.c</FileName>
+              <FileName>ctrl.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\implements\pid.c</FilePath>
+              <FilePath>.\implements\ctrl.c</FilePath>
+            </File>
+            <File>
+              <FileName>timer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\implements\timer.h</FilePath>
+            </File>
+            <File>
+              <FileName>timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\implements\timer.c</FilePath>
             </File>
           </Files>
         </Group>

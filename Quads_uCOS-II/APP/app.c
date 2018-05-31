@@ -20,7 +20,7 @@ float text_data = 1.23456;
 
 extern char USART_TxBuffer[USART_TxBuffer_Size];			//发送数据数组
 extern char USART_RxBuffer[USART_RxBuffer_Size];			//接收数据数组
-
+extern int counter;
 
 void Task_LED1(void *p_arg)
 {
@@ -62,9 +62,15 @@ void Task_LED1(void *p_arg)
 //		MPU9250_Get_Offset9(data);
 //		printf("%d  %d  %d\n",data[0],data[1],data[2]);
 		
-		
-		OSTimeDlyHMSM(0,0,1,0);
-		delay_us(100000);
+		Timer_Start();
+		OSTimeDlyHMSM(0,0,0,500);
+//		for(i = 0; i<65500; i++ )
+//			i++;
+		Timer_End();
+		printf("counter:%d\n",counter);
+		counter = 0;
+//		OSTimeDlyHMSM(0,0,1,500);
+//		delay_us(100000);
     }
 }
 

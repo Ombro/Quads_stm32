@@ -52,3 +52,5 @@
 .\objects\iic.o: .\implements\kalman.h
 .\objects\iic.o: .\implements\usart.h
 .\objects\iic.o: .\implements\debug.h
+.\objects\iic.o: .\implements\ctrl.h
+.\objects\iic.o: .\implements\timer.h

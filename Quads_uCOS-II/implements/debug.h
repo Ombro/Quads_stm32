@@ -29,7 +29,7 @@ void Restart_USART_DMA(void);						//重新开启DMA，解决地址自增
 void Debug_Init(void);								//串口、DMA初始化
 
 void set_pid(float arr[], char *p);					//设置pid参数
-void analyze_data(char *buff)						//解析数据包
+void analyze_data(char *buff);						//解析数据包
 
 void save_pidparm(void);							//保存pid参数到内部flash
 void get_pidparm(void);								//从内部flash获取pid参数

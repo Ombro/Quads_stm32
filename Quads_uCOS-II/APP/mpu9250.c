@@ -13,7 +13,7 @@
  /*
  * 函数名	：MPU9250_Get_Raw_Data
  * 描述		：获取9轴原始数据
- * 输入		：无
+ * 输入		：Raw_Buff	：存放原始数据的数组
  * 输出		：无
  */
 void MPU9250_Get_Raw_Data(short *Raw_Buff)
@@ -29,7 +29,7 @@ void MPU9250_Get_Raw_Data(short *Raw_Buff)
  /*
  * 函数名	：MPU9250_Get_Offset9
  * 描述		：读取偏差值
- * 输入		：无
+ * 输入		：MPU9250_Offset	：存放偏差值数组，用于校正初始姿态
  * 输出		：无
  */
 void MPU9250_Get_Offset9(short *MPU9250_Offset)

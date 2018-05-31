@@ -78,50 +78,35 @@ typedef struct
 
 typedef struct
 {
-	float SetPoint;
-	float Input;
-	float Output;
+	float target;
+	float input;
+	float output;
 	float error_last;
-	float error_pre;
-	float p;
-	float i;
-	float d;
-}axis;
+	float error_cur;
+	float omega_last;
+	float increment;
+}PID_VAL;
 
 typedef struct
 {
-	axis shell_p;
-	axis shell_i;
-	axis core_p;
-	axis core_i;
-	axis core_d;
+	PID_VAL core;
+	PID_VAL shell;
+}PID_CASCADE;
+
+typedef struct
+{
+	PID_CASCADE x;
+	PID_CASCADE y;
 	float shell_t;
 	float core_t;
 }PID;
 
-//PID外环
-//typedef struct
-//{
-//	float p;
-//	float i;
-////	float d;
-//}Shell;
-
-////PID内环
-//typedef struct
-//{
-//	float p;
-//	float i;
-//	float d;
-//}Core;
-
-////PID控制参数
-//typedef struct
-//{
-//	Shell shell;
-//	Core core;
-//}PID;
-
-
+typedef struct
+{
+	float forward;
+	float backward;
+	float left;
+	float right;
+}MOVE;
 
 /************************* (C) COPYRIGHT 2017 G627 Team **************************/

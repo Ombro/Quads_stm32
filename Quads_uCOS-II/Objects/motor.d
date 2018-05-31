@@ -51,3 +51,5 @@
 .\objects\motor.o: .\implements\kalman.h
 .\objects\motor.o: .\implements\usart.h
 .\objects\motor.o: .\implements\debug.h
+.\objects\motor.o: .\implements\ctrl.h
+.\objects\motor.o: .\implements\timer.h

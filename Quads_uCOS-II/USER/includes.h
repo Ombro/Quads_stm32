@@ -33,8 +33,8 @@
 #include "kalman.h"
 #include "usart.h"
 #include "debug.h"
-
-
+#include "ctrl.h"
+#include "timer.h"
 
 #endif //__INCLUDES_H__
 

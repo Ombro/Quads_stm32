@@ -14,7 +14,7 @@ motor		 PA6		  TIM3_CH1
 			 PB0		  TIM3_CH3
 			 PB1		  TIM3_CH4
 
-		 
+timer		 PA1		  TIM2_CH2
 		 
 		 
 		 
