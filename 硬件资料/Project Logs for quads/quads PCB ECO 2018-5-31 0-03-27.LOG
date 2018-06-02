@@ -1,0 +1,48 @@
+Removed Pin From Net: NetName=VCC3V3 Pin=2307_OUT-1
+Removed Pin From Net: NetName=PB0 Pin=Q1-2
+Removed Pin From Net: NetName=PB0 Pin=Q2-2
+Removed Pin From Net: NetName=PB0 Pin=Q4-2
+Removed Pin From Net: NetName=PB0 Pin=R6-2
+Removed Pin From Net: NetName=PB0 Pin=R7-2
+Removed Pin From Net: NetName=PB0 Pin=R9-2
+Change Component Footprint: Designator=D5 Old Footprint=SMB New Footprint=C0805
+Added Component: Designator=D6(C0805)
+Added Component: Designator=D7(C0805)
+Added Component: Designator=D8(C0805)
+Added Component: Designator=POW(HDR1X5)
+Added Component: Designator=SW_L(HDR1X3)
+Added Component: Designator=SW_R(HDR1X3)
+Added Pin To Net: NetName=PA6 Pin=D5-1
+Added Pin To Net: NetName=GND Pin=D5-2
+Added Pin To Net: NetName=PA7 Pin=D6-1
+Added Pin To Net: NetName=GND Pin=D6-2
+Added Pin To Net: NetName=PB0 Pin=D7-1
+Added Pin To Net: NetName=GND Pin=D7-2
+Added Pin To Net: NetName=PB1 Pin=D8-1
+Added Pin To Net: NetName=GND Pin=D8-2
+Added Pin To Net: NetName=VCC7V4 Pin=POW-1
+Added Pin To Net: NetName=GND Pin=POW-5
+Added Pin To Net: NetName=PA6 Pin=Q1-2
+Added Pin To Net: NetName=PA7 Pin=Q2-2
+Added Pin To Net: NetName=PB1 Pin=Q4-2
+Added Pin To Net: NetName=PA6 Pin=R6-2
+Added Pin To Net: NetName=PA7 Pin=R7-2
+Added Pin To Net: NetName=PB1 Pin=R9-2
+Added Pin To Net: NetName=5V Pin=SW_R-2
+Added Pin To Net: NetName=SCL Pin=U1-14
+Added Pin To Net: NetName=SDA Pin=U1-15
+Change Net Name : Old Net Name=PA9 New Net Name=TX
+Change Net Name : Old Net Name=PA10 New Net Name=RX
+Added Pin To Net: NetName=NetPOW_2 Pin=POW-2
+Added Pin To Net: NetName=NetPOW_2 Pin=POW-4
+Added Net: Name=NetPOW_2
+Added Pin To Net: NetName=SW Pin=2307_OUT-1
+Added Pin To Net: NetName=SW Pin=SW_R-3
+Added Net: Name=SW
+Added Member To Class: ClassName=quads Member=Component D6 LED
+Added Member To Class: ClassName=quads Member=Component D7 LED
+Added Member To Class: ClassName=quads Member=Component D8 LED
+Added Member To Class: ClassName=quads Member=Component POW Header 5
+Added Member To Class: ClassName=quads Member=Component SW_L Header 3
+Added Member To Class: ClassName=quads Member=Component SW_R Header 3
+Added Room: Name=quads

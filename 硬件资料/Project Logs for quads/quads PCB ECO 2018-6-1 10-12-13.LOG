@@ -1,0 +1,9 @@
+Removed Pin From Net: NetName=GND Pin=2307_IN-5
+Removed Pin From Net: NetName=SW Pin=2307_OUT-1
+Added Component: Designator=C11(C0805tan)
+Added Component: Designator=R5(C0805tan)
+Added Component: Designator=SW1(KEY-SMT)
+Added Pin To Net: NetName=SW Pin=2307_IN-5
+Added Pin To Net: NetName=GND Pin=2307_OUT-1
+Added Member To Class: ClassName=quads Member=Component C12 104,0805
+Added Room: Name=quads

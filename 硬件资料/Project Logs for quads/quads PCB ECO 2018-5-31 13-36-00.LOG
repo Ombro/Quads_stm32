@@ -1,0 +1,5 @@
+Added Component: Designator=R1(C0805)
+Added Pin To Net: NetName=OSCOUT Pin=R1-1
+Added Pin To Net: NetName=OSCIN Pin=R1-2
+Added Member To Class: ClassName=quads Member=Component R1 Res2
+Added Room: Name=quads

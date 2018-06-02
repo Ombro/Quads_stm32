@@ -7,5 +7,7 @@
         <file>ConnectForm.ui.qml</file>
         <file>Debug.qml</file>
         <file>DebugForm.ui.qml</file>
+        <file>Controll.qml</file>
+        <file>ControllForm.ui.qml</file>
     </qresource>
 </RCC>

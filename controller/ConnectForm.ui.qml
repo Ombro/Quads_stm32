@@ -46,7 +46,7 @@ Item {
                     id: label_state
                     x: 50
                     y: 62
-                    text: TCP.Connect_State
+                    text: "#TCP.Connect_State#"
                     font.bold: true
                     anchors.verticalCenterOffset: 60
                     anchors.horizontalCenterOffset: 0

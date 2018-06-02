@@ -1,0 +1,42 @@
+Added Component: Designator=C11(C0805tan)
+Added Component: Designator=R2(C0805tan)
+Added Component: Designator=R3(C0805tan)
+Added Component: Designator=R4(C0805tan)
+Added Component: Designator=R5(C0805tan)
+Added Component: Designator=R10(C0805tan)
+Added Component: Designator=R11(C0805tan)
+Added Component: Designator=SW1(KEY-SMT)
+Added Component: Designator=U3(Micro_USB)
+Added Pin To Net: NetName=GND Pin=C11-1
+Added Pin To Net: NetName=RESET Pin=C11-2
+Added Pin To Net: NetName=NetR2_1 Pin=R2-1
+Added Pin To Net: NetName=PA11 Pin=R2-2
+Added Pin To Net: NetName=NetR3_1 Pin=R3-1
+Added Pin To Net: NetName=PA12 Pin=R3-2
+Added Pin To Net: NetName=5V Pin=R4-1
+Added Pin To Net: NetName=PA12 Pin=R4-2
+Added Pin To Net: NetName=RESET Pin=R5-1
+Added Pin To Net: NetName=VCC3V3 Pin=R5-2
+Added Pin To Net: NetName=PA3 Pin=R10-1
+Added Pin To Net: NetName=VCC7V4 Pin=R10-2
+Added Pin To Net: NetName=GND Pin=R11-1
+Added Pin To Net: NetName=PA3 Pin=R11-2
+Added Pin To Net: NetName=GND Pin=SW1-1
+Added Pin To Net: NetName=GND Pin=SW1-1
+Added Pin To Net: NetName=RESET Pin=SW1-2
+Added Pin To Net: NetName=RESET Pin=SW1-2
+Added Pin To Net: NetName=5V Pin=U3-1
+Added Pin To Net: NetName=NetR2_1 Pin=U3-2
+Added Pin To Net: NetName=NetR3_1 Pin=U3-3
+Added Pin To Net: NetName=GND Pin=U3-4
+Added Pin To Net: NetName=GND Pin=U3-5
+Added Member To Class: ClassName=quads Member=Component C11 105,0805
+Added Member To Class: ClassName=quads Member=Component R2 20R,0805
+Added Member To Class: ClassName=quads Member=Component R3 20R,0805
+Added Member To Class: ClassName=quads Member=Component R4 4.7K,0805
+Added Member To Class: ClassName=quads Member=Component R5 10K,0805
+Added Member To Class: ClassName=quads Member=Component R10 56K,0805
+Added Member To Class: ClassName=quads Member=Component R11 39K,0805
+Added Member To Class: ClassName=quads Member=Component SW1 SW-PB_V
+Added Member To Class: ClassName=quads Member=Component U3 USB-mrico
+Added Room: Name=quads
