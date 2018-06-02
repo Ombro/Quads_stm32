@@ -46,7 +46,7 @@ Item {
                     id: label_state
                     x: 50
                     y: 62
-                    text: "#TCP.Connect_State#"
+                    text: TCP.Connect_State
                     font.bold: true
                     anchors.verticalCenterOffset: 60
                     anchors.horizontalCenterOffset: 0
@@ -56,16 +56,15 @@ Item {
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
 
-//                Connections {
-//                    target: label_state
-//                    TCP.onConnected: {
-//                        label_state.text = qsTr("connected!!!")
-//                    }
-//                    TCP.onHostFound: {
-//                        label_state.text = qsTr("connecting...")
-//                    }
-//                }
-
+                //                Connections {
+                //                    target: label_state
+                //                    TCP.onConnected: {
+                //                        label_state.text = qsTr("connected!!!")
+                //                    }
+                //                    TCP.onHostFound: {
+                //                        label_state.text = qsTr("connecting...")
+                //                    }
+                //                }
                 Label {
                     id: label_port
                     x: -65

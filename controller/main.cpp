@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
     Tcp_transmission tcp;
     context ->setContextProperty("TCP", &tcp);
 
-    QObject::connect(&tcp, SIGNAL(hostFound()), &tcp, SLOT(connect_success()));
+    QObject::connect(&tcp, SIGNAL(connected()), &tcp, SLOT(connect_success()));
     QObject::connect(&tcp, SIGNAL(disconnected()), &tcp, SLOT(connect_fail()));
 
 

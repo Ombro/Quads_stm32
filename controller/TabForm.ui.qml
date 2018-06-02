@@ -21,14 +21,6 @@ Item {
             text: qsTr("debug")
         }
 
-        Connections {
-            target: connect
-            onClicked: {
-                connectForm.visible = true
-                debugForm.visible = false
-            }
-        }
-
         TabButton {
             id: control
             x: 268
@@ -37,19 +29,29 @@ Item {
         }
 
         Connections {
+            target: connect
+            onClicked: {
+                connectForm.visible = true
+                debugForm.visible = false
+                controlForm.visible = false
+            }
+        }
+
+        Connections {
             target: control
             onClicked: {
                 connectForm.visible = false
                 debugForm.visible = false
+                controlForm.visible = true
             }
         }
-
 
         Connections {
             target: debug
             onClicked: {
                 connectForm.visible = false
                 debugForm.visible = true
+                controlForm.visible = false
             }
         }
     }
