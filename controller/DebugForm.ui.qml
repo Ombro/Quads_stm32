@@ -1,6 +1,7 @@
 import QtQuick 2.4
 import QtQuick.Controls 2.3
 
+
 //import Qt.Test_class 1.0
 Item {
     width: 480
@@ -27,10 +28,13 @@ Item {
             Button {
                 id: pid_x
                 x: 90
+                width: 80
                 text: qsTr("X")
+                font.bold: true
+                font.pointSize: 15
                 anchors.top: parent.top
-                anchors.topMargin: 470
-                anchors.horizontalCenterOffset: -80
+                anchors.topMargin: 440
+                anchors.horizontalCenterOffset: -110
                 anchors.horizontalCenter: parent.horizontalCenter
             }
 
@@ -44,10 +48,13 @@ Item {
             Button {
                 id: pid_y
                 x: 239
+                width: 80
                 text: qsTr("Y")
+                font.bold: true
+                font.pointSize: 15
                 anchors.top: parent.top
-                anchors.topMargin: 470
-                anchors.horizontalCenterOffset: 80
+                anchors.topMargin: 440
+                anchors.horizontalCenterOffset: 0
                 anchors.horizontalCenter: parent.horizontalCenter
             }
 
@@ -55,6 +62,26 @@ Item {
                 target: pid_y
                 onClicked: {
                     TCP.link_y_parm()
+                }
+            }
+
+            Button {
+                id: save
+                x: 212
+                width: 80
+                text: qsTr("SAVE")
+                font.bold: true
+                font.pointSize: 15
+                anchors.horizontalCenterOffset: 110
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.top: parent.top
+                anchors.topMargin: 440
+            }
+
+            Connections {
+                target: save
+                onClicked: {
+                    TCP.save_pidparm()
                 }
             }
 

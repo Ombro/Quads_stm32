@@ -7,23 +7,23 @@ Window {
     width: 480
     height: 640
     title: qsTr("Hello World")
-
-    DebugForm {
-        id: debugForm
-        anchors.fill: parent
-    }
     TabForm {
         id: tabForm
         anchors.fill: parent
     }
 
-    ControlForm {
-        id: controlForm
+    ConnectForm {
+        id: connectForm
         anchors.fill: parent
     }
 
-    ConnectForm {
-        id: connectForm
+    DebugForm {
+        id: debugForm
+        anchors.fill: parent
+    }
+
+    ControlForm {
+        id: controlForm
         anchors.fill: parent
     }
 

@@ -111,7 +111,7 @@ void Motor_Init(void)//PWM初始化
 			  out4	：电机4PWM
  * 输出		：无
  */
-void Motor_Out(u8 out1, u8 out2, u8 out3, u8 out4)
+void Motor_Out(u16 out1, u16 out2, u16 out3, u16 out4)
 {
 	motor_pwm.pwm1=out1;
 	motor_pwm.pwm2=out2;

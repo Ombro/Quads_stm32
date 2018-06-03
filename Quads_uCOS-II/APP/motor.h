@@ -19,7 +19,7 @@ void TIM3_GPIO_Config(void);
 void TIM3_Mode_Config(void);
 void Motor_Init(void);//PWM≥ı ºªØ
 void SET_PWM(void);
-void Motor_Out(u8 out1, u8 out2, u8 out3, u8 out4);
+void Motor_Out(u16 out1, u16 out2, u16 out3, u16 out4);
 
 
 #endif //__MOTOR_H__

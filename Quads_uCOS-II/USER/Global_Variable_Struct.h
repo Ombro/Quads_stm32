@@ -35,10 +35,10 @@ typedef struct
 //µç»úpwm
 typedef struct
 {
-	unsigned char pwm1; 
-	unsigned char pwm2;
-	unsigned char pwm3;
-	unsigned char pwm4;
+	unsigned short pwm1; 
+	unsigned short pwm2;
+	unsigned short pwm3;
+	unsigned short pwm4;
 }Motor_PWM;
 
 

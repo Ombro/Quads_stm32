@@ -1,11 +1,15 @@
 import QtQuick 2.4
 import QtQuick.Controls 2.3
 import QtQuick 2.7
+import QtQuick.Layouts 1.3
+import QtGraphicalEffects 1.0
+import QtGraphicalEffects.private 1.0
 
 Item {
     id: item1
     width: 480
     height: 640
+    property alias left_hand: left_hand
     property alias left_button_core: left_button_core
     visible: false
     Rectangle {
@@ -26,13 +30,12 @@ Item {
 
             Rectangle {
                 id: left_joystick
-                x: 8
                 y: 125
-                width: 200
-                height: 200
+                width: 240
+                height: 240
                 color: "#ffffff"
-                anchors.horizontalCenterOffset: -132
-                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.left: parent.left
+                anchors.leftMargin: 0
                 anchors.verticalCenterOffset: 0
                 anchors.verticalCenter: parent.verticalCenter
 
@@ -44,12 +47,12 @@ Item {
                     drag.axis: Drag.XandYAxis
                     drag.minimumX: 0
                     drag.maximumX: parent.width - left_button_core.width
-                    drag.minimumY: left_button_shell.height / 2 - Math.sqrt(
+                    drag.minimumY: parent.height / 2 - left_button_core.height / 2 - Math.sqrt(
                                        Math.pow(left_button_shell.width / 2, 2)
                                        - Math.pow(Math.abs(
                                                       left_button_core.x + left_button_core.width
                                                       / 2 - parent.width / 2), 2))
-                    drag.maximumY: left_button_shell.height / 2 + Math.sqrt(
+                    drag.maximumY: parent.height / 2 - left_button_core.height / 2 + Math.sqrt(
                                        Math.pow(left_button_shell.width / 2, 2)
                                        - Math.pow(Math.abs(
                                                       left_button_core.x + left_button_core.width
@@ -58,31 +61,55 @@ Item {
 
                 Connections {
                     target: left_mouse_area
+                    onPositionChanged: {
+                        TCP.x_dir = ((left_button_core.x - 80) * 25 / 80).toLocaleString()
+                        TCP.y_dir = (-(left_button_core.y - 80) * 25 / 80).toLocaleString()
+                        TCP.send_control_parm()
+                    }
+
                     onReleased: {
-                        left_button_core.x = 75
-                        left_button_core.y = 75
+                        left_button_core.x = 80
+                        left_button_core.y = 80
+                        TCP.x_dir = 0
+                        TCP.y_dir = 0
+                        TCP.send_control_parm()
                     }
                 }
 
                 RoundButton {
                     id: left_button_shell
-                    x: 25
-                    y: 25
-                    width: 150
-                    height: 150
+                    x: 29
+                    y: 37
+                    width: 160
+                    height: 160
                     text: "+"
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenter: parent.verticalCenter
                     highlighted: false
                     checkable: false
                     checked: false
                     enabled: false
                 }
 
+                Label {
+                    id: title
+                    x: 115
+                    y: -title.height
+                    text: qsTr("Controller")
+                    anchors.horizontalCenterOffset: 131
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    font.underline: false
+                    font.bold: true
+                    font.pointSize: 30
+                    horizontalAlignment: Text.AlignHCenter
+                }
+
                 RoundButton {
                     id: left_button_core
-                    x: 75
-                    y: 75
-                    width: 50
-                    height: 50
+                    x: 80
+                    y: 80
+                    width: 80
+                    height: 80
                     text: "+"
                     highlighted: true
                     enabled: false
@@ -91,126 +118,135 @@ Item {
             }
 
             Rectangle {
-                id: right_joystick
-                x: 272
-                y: 115
-                width: 200
-                height: 200
+                id: right_control
+                x: left_joystick.width
+                y: left_joystick.y
+                width: parent.width - left_joystick.width
+                height: left_joystick.height
                 color: "#ffffff"
-                anchors.horizontalCenterOffset: 132
-                anchors.horizontalCenter: parent.horizontalCenter
-                MouseArea {
-                    id: right_mouse_area
-                    drag.maximumY: right_button_shell.height / 2 + Math.sqrt(
-                                       Math.pow(right_button_shell.width / 2, 2)
-                                       - Math.pow(Math.abs(
-                                                      right_button_core.x + right_button_core.width
-                                                      / 2 - parent.width / 2), 2))
-                    anchors.fill: parent
-                    drag.axis: Drag.XandYAxis
-                    enabled: true
-                    drag.minimumY: right_button_shell.height / 2 - Math.sqrt(
-                                       Math.pow(right_button_shell.width / 2, 2)
-                                       - Math.pow(Math.abs(
-                                                      right_button_core.x + right_button_core.width
-                                                      / 2 - parent.width / 2), 2))
-                    drag.minimumX: 0
-                    drag.maximumX: parent.width - right_button_core.width
-                    drag.target: right_button_core
-                }
 
-                Connections {
-                    target: right_mouse_area
-                    onReleased: {
-                        right_button_core.x = 75
-                        right_button_core.y = 75
+                Slider {
+                    id: slider_throttle
+                    value: 0.5
+                    x: 160
+                    y: 0
+                    width: 40
+                    height: 270
+                    stepSize: 0.01
+                    anchors.right: parent.right
+                    anchors.rightMargin: 30
+                    orientation: Qt.Vertical
+                    font.pointSize: 6
+
+                    Connections {
+                        target: slider_throttle
+                        onValueChanged: {
+                            throttle_value.text = slider_throttle.value.toLocaleString()
+                            TCP.throttle = slider_throttle.value.toLocaleString(
+                                        )
+                            TCP.throttle = slider_throttle.value.toLocaleString(
+                                        )
+                            TCP.send_control_parm()
+                        }
+                    }
+
+                    Label {
+                        id: throttle
+                        x: -197
+                        y: 8
+                        text: qsTr("throttle:")
+                        font.bold: true
+                        anchors.right: parent.right
+                        anchors.rightMargin: 80
+                        horizontalAlignment: Text.AlignLeft
+                        font.pointSize: 15
+
+                        Label {
+                            id: throttle_value
+                            x: 123
+                            text: qsTr("value")
+                            anchors.top: parent.top
+                            anchors.topMargin: 20
+                            anchors.horizontalCenterOffset: 0
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            font.pointSize: 15
+                        }
+                    }
+
+                    SwitchDelegate {
+                        id: power
+                        x: -140
+                        y: 220
+                        text: qsTr("OFF")
+                        spacing: 12
+                        font.pointSize: 20
+                        anchors.right: parent.right
+                        anchors.rightMargin: 100
+
+                        Button {
+                            id: right_hand
+                            x: 54
+                            width: 60
+                            height: 60
+                            text: qsTr(">")
+                            anchors.top: parent.top
+                            anchors.topMargin: -150
+                            anchors.horizontalCenterOffset: 60
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            font.bold: true
+                            font.pointSize: 40
+                        }
+
+                        Connections {
+                            target: right_hand
+                            onClicked: {
+                                TCP.turn = 1
+                                TCP.send_control_parm()
+                            }
+                            onReleased: {
+                                TCP.turn = 0
+                            }
+                        }
+
+                        Button {
+                            id: left_hand
+                            x: -32
+                            width: 60
+                            height: 60
+                            text: qsTr("<")
+                            anchors.top: parent.top
+                            anchors.topMargin: -150
+                            anchors.horizontalCenterOffset: -60
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            font.bold: true
+                            font.pointSize: 40
+                        }
+
+                        Connections {
+                            target: left_hand
+                            onClicked: {
+                                TCP.turn = -1
+                                TCP.send_control_parm()
+                            }
+                            onReleased: {
+                                TCP.turn = 0
+                            }
+                        }
+
+                        Button {
+                            id: homing
+                            x: 11
+                            y: -68
+                            width: 95
+                            height: 50
+                            text: qsTr("HOME")
+                            font.pointSize: 20
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            anchors.bottom: parent.bottom
+                            anchors.bottomMargin: 70
+                        }
                     }
                 }
-
-                RoundButton {
-                    id: right_button_shell
-                    x: 25
-                    y: 25
-                    width: 150
-                    height: 150
-                    text: "+"
-                    enabled: false
-                }
-
-                RoundButton {
-                    id: right_button_core
-                    x: 75
-                    y: 75
-                    width: 50
-                    height: 50
-                    text: "+"
-                    highlighted: true
-                    enabled: false
-                    wheelEnabled: false
-                }
-                anchors.verticalCenterOffset: 0
-                anchors.verticalCenter: parent.verticalCenter
-            }
-
-            Slider {
-                id: accelerograph
-                x: 56
-                y: left_joystick.y + 204
-                width: 326
-                height: 40
-                anchors.horizontalCenterOffset: 44
-                anchors.horizontalCenter: parent.horizontalCenter
-                value: 0.5
-            }
-
-            Button {
-                id: power
-                x: 190
-                y: 105
-                width: 70
-                height: 40
-
-                text: qsTr("OFF")
-                anchors.verticalCenterOffset: -40
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.horizontalCenterOffset: 0
-                anchors.horizontalCenter: parent.horizontalCenter
-            }
-
-            Button {
-                id: homing
-                x: 197
-                y: 151
-                width: 70
-                height: 40
-                text: qsTr("HOME")
-                anchors.verticalCenterOffset: 40
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.horizontalCenterOffset: 0
-                anchors.horizontalCenter: parent.horizontalCenter
-            }
-
-            Label {
-                id: label_acce
-                x: 15
-                y: left_joystick.y + 200
-                text: qsTr("acce:")
-                anchors.horizontalCenterOffset: -175
-                anchors.horizontalCenter: parent.horizontalCenter
-                font.bold: true
-                font.pointSize: 24
-            }
-
-            Label {
-                id: title
-                x: 115
-                y: left_joystick.y - 50
-                text: qsTr("Controller")
-                anchors.horizontalCenter: parent.horizontalCenter
-                font.underline: false
-                font.bold: true
-                font.pointSize: 30
-                horizontalAlignment: Text.AlignHCenter
             }
         }
     }
